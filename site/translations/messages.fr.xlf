@@ -57,6 +57,50 @@
         <source>Edit member</source>
         <target>Editer un membre</target>
       </trans-unit>
+      <trans-unit id="umtpFNS" resname="List events">
+        <source>List events</source>
+        <target>Liste des évènements</target>
+      </trans-unit>
+      <trans-unit id="EhVukhv" resname="Id">
+        <source>Id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="fozSBW2" resname="Title">
+        <source>Title</source>
+        <target>Titre</target>
+      </trans-unit>
+      <trans-unit id="mcQKtAW" resname="Date">
+        <source>Date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="M7k0ds9" resname="Time">
+        <source>Time</source>
+        <target>Heure</target>
+      </trans-unit>
+      <trans-unit id="6UY9zPB" resname="Place">
+        <source>Place</source>
+        <target>Lieu</target>
+      </trans-unit>
+      <trans-unit id="IMIzC8T" resname="UpdatedAt">
+        <source>UpdatedAt</source>
+        <target>Dernière mise à jour</target>
+      </trans-unit>
+      <trans-unit id="2E7rrak" resname="Photo">
+        <source>Photo</source>
+        <target>Photo</target>
+      </trans-unit>
+      <trans-unit id="0GwkvjL" resname="No events.">
+        <source>No events.</source>
+        <target>No events.</target>
+      </trans-unit>
+      <trans-unit id="rfmEuSO" resname="Create a new event">
+        <source>Create a new event</source>
+        <target>__Create a new event</target>
+      </trans-unit>
+      <trans-unit id="eJeegiJ" resname="Create a new member">
+        <source>Create a new member</source>
+        <target>__Create a new member</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

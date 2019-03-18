@@ -1,0 +1,134 @@
+{{ form_start(form, { 'attr': {'class': 'form-horizontal'} }) }}
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.title, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.title) }}
+            {{ form_widget(form.title, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.information, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.information) }}
+            {{ form_widget(form.information, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.imageFile, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.imageFile) }}
+            {{ form_widget(form.imageFile) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.date, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.date) }}
+            {{ form_widget(form.date.day) }}
+            {{ form_widget(form.date.month) }}
+            {{ form_widget(form.date.year) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.time, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.time) }}
+            {{ form_widget(form.time.hour) }}
+            {{ form_widget(form.time.minute) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.place, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.place) }}
+            {{ form_widget(form.place, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.lat, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.lat) }}
+            {{ form_widget(form.lat, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.lng, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.lng) }}
+            {{ form_widget(form.lng, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.fb, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.fb) }}
+            {{ form_widget(form.fb, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.twttr, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.twttr) }}
+            {{ form_widget(form.twttr, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.website, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.website) }}
+            {{ form_widget(form.website, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+            <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}
