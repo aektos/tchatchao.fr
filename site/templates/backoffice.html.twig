@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="tchatchao">
     <meta name="keywords" content="bal folk, baleti, trad, vielle à roue, accordéon diatonique"/>
+    <meta name="robots" content="none" />
     {% block meta %}{% endblock %}
 
     <title>{% block title %}{% endblock %} Tchatchao</title>
@@ -44,6 +45,17 @@
         <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     {% endif %}
 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.3.1/css/fileinput.min.css" />
+
+    <style>
+        body {
+            background-color: #222 !important;
+        }
+        h1, section#login .section-heading {
+            color: white;
+        }
+    </style>
+
     {% block stylesheets %}{% endblock %}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -65,6 +77,23 @@
 
 </head>
 <body id="page-top" class="index">
-{% block body %}{% endblock %}
+    {{ include('partials/menuBO.html.twig') }}
+
+    <div class="container-fluid">
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}{% endblock %}
+        {% block body %}{% endblock %}
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.3.1/js/fileinput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/tinymce.min.js"></script>
 </body>
 </html>

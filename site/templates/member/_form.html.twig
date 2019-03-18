@@ -1,0 +1,67 @@
+{{ form_start(form, { 'attr': {'class': 'form-horizontal'} }) }}
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.firstname, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.firstname) }}
+            {{ form_widget(form.firstname, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.lastname, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.lastname) }}
+            {{ form_widget(form.lastname, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.function, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.function) }}
+            {{ form_widget(form.function, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.avatar, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.avatar) }}
+            {{ form_widget(form.avatar.file, { 'attr': {'class': 'form-control upload_file'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+            <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}
+
+<script>
+    $(document).ready(function() {
+        $('.upload_file').fileinput({
+            showUpload: false,
+            {% if form.avatar.vars.value %}
+            initialPreview: [
+                "<img src='{{ asset('upload/'~form.avatar.vars.value.id~'.'~form.avatar.vars.value.url) }}' class='file-preview-image' alt='{{ form.avatar.vars.value.alt }}' title='{{ form.avatar.vars.value.alt }}'>",
+            ]
+            {% endif %}
+        });
+    });
+</script>

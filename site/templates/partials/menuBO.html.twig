@@ -1,0 +1,33 @@
+<!-- Menu -->
+<div id="menu" class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="{{ path('home') }}" class="navbar-brand">Backoffice Tchatchao</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('home') }}">Arrière-plans</a></li>
+                <li><a href="{{ path('home') }}">Agenda</a></li>
+                <li><a href="{{ path('home') }}">Galerie</a></li>
+                <li><a href="{{ path('home') }}">Présentation</a></li>
+                <li><a href="{{ path('home') }}">Contact</a></li>
+                <li><a href="{{ path('home') }}" target="__blank">Voir le site</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Fin Menu -->

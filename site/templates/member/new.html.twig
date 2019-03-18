@@ -1,0 +1,15 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}New member{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}Create new member{% endtrans %}</h1>
+
+    <div class="well">
+
+        {{ include('member/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('member_index') }}">{% trans %}back to list{% endtrans %}</a>
+
+    </div>
+{% endblock %}

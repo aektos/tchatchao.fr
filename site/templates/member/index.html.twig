@@ -1,0 +1,61 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}{% trans %}Presentation{% endtrans %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans %}Presentation{% endtrans %}</h1>
+
+    <div class="tab-pane fade in active adminTable well" id="members">
+        <h2>{% trans %}List members{% endtrans %}</h2>
+
+        {% if members %}
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th>{% trans %}membername{% endtrans %}</th>
+                        <th>{% trans %}Firstname{% endtrans %}</th>
+                        <th>{% trans %}Lastname{% endtrans %}</th>
+                        <th>{% trans %}Function{% endtrans %}</th>
+                        <th>{% trans %}Avatar{% endtrans %}</th>
+                        <th></th>  <!-- Actions column -->
+                    </tr>
+                    </thead>
+
+                    {% for member in members %}
+                        <tr>
+                            <td>{{ member.membername }}</td>
+                            <td>{{ member.firstname }}</td>
+                            <td>{{ member.lastname }}</td>
+                            <td>{{ member.function }}</td>
+                            <td>{% if member.avatar %}<img class="img-responsive"
+                                                           src="{{ asset('upload/'~member.avatar.id~'.'~member.avatar.url) }}"
+                                                           alt="{{ member.firstname }}-{{ member.lastname }}-profil"
+                                                           width="23"> <!--http://placehold.it/900x300-->{% endif %}</td>
+                            <td>
+                                <a href="{{ path('member_edit', {'id': member.id}) }}" class="btn btn-info btn-xs">{% trans %}edit{% endtrans %}</a>
+                                {{ include('member/_delete_form.html.twig', {'member': member}) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-warning">{% trans %}No members.{% endtrans %}</div>
+        {% endif %}
+
+        <a href="{{ path('member_new') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span>
+            {% trans %}Add a new member{% endtrans %}
+        </a>
+    </div>
+
+    {#<div class="well">#}
+    {#<h2>Description du groupe</h2>#}
+    {#<a href="{{ path('app_description_edit', { 'id': description.id }) }}" class="btn btn-info btn-xs" title="Edit"><span#}
+    {#class="glyphicon glyphicon-edit"></span></a>#}
+    {#<p>{{ description.content | raw }}</p>#}
+    {#</div>#}
+
+{% endblock %}
