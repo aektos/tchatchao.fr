@@ -6,6 +6,7 @@ use App\Entity\Member;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class MemberType extends AbstractType
 {
@@ -15,7 +16,12 @@ class MemberType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('function')
-            ->add('avatar', ImageType::class, array('required' => false))
+            ->add('imageFile',VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'image_uri' => true,
+                'download_uri' => false
+            ])
         ;
     }
 

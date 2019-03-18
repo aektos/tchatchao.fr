@@ -7,63 +7,55 @@
     <body>
       <trans-unit id="REE8PZe" resname="Are you sure you want to delete this item?">
         <source>Are you sure you want to delete this item?</source>
-        <target>__Are you sure you want to delete this item?</target>
+        <target>Etes-vous sûr de vouloir supprimer cet élément?</target>
       </trans-unit>
       <trans-unit id="4tClSWj" resname="Delete">
         <source>Delete</source>
-        <target>__Delete</target>
+        <target>Supprimer</target>
       </trans-unit>
       <trans-unit id="NelNjIt" resname="Create new member">
         <source>Create new member</source>
-        <target>__Create new member</target>
+        <target>Créer un nouveau membre</target>
       </trans-unit>
       <trans-unit id="U0M9PNE" resname="back to list">
         <source>back to list</source>
-        <target>__back to list</target>
+        <target>Retour à la liste</target>
       </trans-unit>
       <trans-unit id="XV7hV3U" resname="Presentation">
         <source>Presentation</source>
-        <target>__Presentation</target>
+        <target>Présentation</target>
       </trans-unit>
       <trans-unit id=".pzkT0_" resname="List members">
         <source>List members</source>
-        <target>__List members</target>
-      </trans-unit>
-      <trans-unit id="BxjtDly" resname="membername">
-        <source>membername</source>
-        <target>__membername</target>
+        <target>Liste des membres</target>
       </trans-unit>
       <trans-unit id="ZHz6kbI" resname="Firstname">
         <source>Firstname</source>
-        <target>__Firstname</target>
+        <target>Prénom</target>
       </trans-unit>
       <trans-unit id="htiPHRy" resname="Lastname">
         <source>Lastname</source>
-        <target>__Lastname</target>
+        <target>Nom</target>
       </trans-unit>
       <trans-unit id="yANxAwL" resname="Function">
         <source>Function</source>
-        <target>__Function</target>
+        <target>Fonction</target>
       </trans-unit>
       <trans-unit id="yo6CbZw" resname="Avatar">
         <source>Avatar</source>
-        <target>__Avatar</target>
+        <target>Avatar</target>
       </trans-unit>
       <trans-unit id="JiEhxTc" resname="edit">
         <source>edit</source>
-        <target>__edit</target>
+        <target>éditer</target>
       </trans-unit>
       <trans-unit id="uZxZ3Kg" resname="No members.">
         <source>No members.</source>
-        <target>__No members.</target>
-      </trans-unit>
-      <trans-unit id="tzAt_OH" resname="Add a new member">
-        <source>Add a new member</source>
-        <target>__Add a new member</target>
+        <target>pas de membres.</target>
       </trans-unit>
       <trans-unit id="oH3q9b6" resname="Edit member">
         <source>Edit member</source>
-        <target>__Edit member</target>
+        <target>Editer un membre</target>
       </trans-unit>
     </body>
   </file>

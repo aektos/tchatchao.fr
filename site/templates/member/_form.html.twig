@@ -35,11 +35,11 @@
 <div class="form-group">
     <div class="row">
         <div class="col-sm-2">
-            {{ form_label(form.avatar, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+            {{ form_label(form.imageFile, NULL, { 'label_attr': {'class': 'control-label'}}) }}
         </div>
         <div class="col-sm-4">
-            {{ form_errors(form.avatar) }}
-            {{ form_widget(form.avatar.file, { 'attr': {'class': 'form-control upload_file'}}) }}
+            {{ form_errors(form.imageFile) }}
+            {{ form_widget(form.imageFile) }}
         </div>
     </div>
 </div>
@@ -52,16 +52,3 @@
     </div>
 </div>
 {{ form_end(form) }}
-
-<script>
-    $(document).ready(function() {
-        $('.upload_file').fileinput({
-            showUpload: false,
-            {% if form.avatar.vars.value %}
-            initialPreview: [
-                "<img src='{{ asset('upload/'~form.avatar.vars.value.id~'.'~form.avatar.vars.value.url) }}' class='file-preview-image' alt='{{ form.avatar.vars.value.alt }}' title='{{ form.avatar.vars.value.alt }}'>",
-            ]
-            {% endif %}
-        });
-    });
-</script>
