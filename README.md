@@ -25,7 +25,7 @@ The website is accessible here: https://tchatchao.fr
     
 2. Regénérer le certificat ssl auto-signé
    
-       $ docker run -it -v ./docker/ssl:/export frapsoft/openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 -subj "/C=US/ST=CA/L=SF/O=Docker-demo/CN=tchatchao.local" -keyout /export/tchatchao.local.key -out "/export/tchatchao.local.cert"
+       $ docker run -it -v `pwd`/docker/ssl:/export frapsoft/openssl req -new -newkey rsa:4096 -days 3650 -nodes -x509 -subj "/C=US/ST=CA/L=SF/O=Docker-demo/CN=tchatchao.local" -keyout /export/tchatchao.local.key -out "/export/tchatchao.local.cert"
 
 3. Build and Start Docker container :
 
