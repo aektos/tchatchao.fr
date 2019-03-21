@@ -16,16 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class MemberController extends AbstractController
 {
     /**
-     * @Route("/", name="member_index", methods={"GET"})
-     */
-    public function index(MemberRepository $memberRepository): Response
-    {
-        return $this->render('member/index.html.twig', [
-            'members' => $memberRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new", name="member_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -38,6 +28,8 @@ class MemberController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($member);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Enregistrement réussi!');
 
             return $this->redirectToRoute('member_index');
         }
@@ -58,6 +50,8 @@ class MemberController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Enregistrement réussi!');
 
             return $this->redirectToRoute('member_index', [
                 'id' => $member->getId(),

@@ -3,50 +3,95 @@
 {% block title %}Album index{% endblock %}
 
 {% block body %}
-    <h1>{% trans %}List albums{% endtrans %}</h1>
+    <h1>{% trans %}Galerie{% endtrans %}</h1>
 
-    <div class="tab-pane fade in active adminTable well" id="members">
-
-    {% if albums %}
-        <div class="table-responsive">
-            <table class="table table-hover table-condensed">
-                <thead>
-                <tr>
-                    <th>{% trans %}Id{% endtrans %}</th>
-                    <th>{% trans %}Title{% endtrans %}</th>
-                    <th>{% trans %}Url{% endtrans %}</th>
-                    <th>{% trans %}Photo{% endtrans %}</th>
-                    <th>{% trans %}actions{% endtrans %}</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for album in albums %}
+    <div class="tab-pane fade in active adminTable well" id="albums">
+        <h2>{% trans %}List albums{% endtrans %}</h2>
+        {% if albums %}
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
                     <tr>
-                        <td>{{ album.id }}</td>
-                        <td>{{ album.title }}</td>
-                        <td>{{ album.url }}</td>
-                        <td>
-                            <img class="img-responsive"
-                                 src="{{ vich_uploader_asset(album, 'imageFile') }}"
-                                 alt="{{ album.title }}"
-                                 width="23"> <!--http://placehold.it/900x300-->
-                        </td>
-                        <td>
-                            <a href="{{ path('album_edit', {'id': album.id}) }}"
-                               class="btn btn-info btn-xs">{% trans %}edit{% endtrans %}</a>
-                            {{ include('album/_delete_form.html.twig', {'album': album}) }}
-                        </td>
+                        <th>{% trans %}Id{% endtrans %}</th>
+                        <th>{% trans %}Title{% endtrans %}</th>
+                        <th>{% trans %}Url{% endtrans %}</th>
+                        <th>{% trans %}Photo{% endtrans %}</th>
+                        <th>{% trans %}actions{% endtrans %}</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    {% else %}
-        <div class="alert alert-warning">{% trans %}No albums.{% endtrans %}</div>
-    {% endif %}
+                    </thead>
+                    <tbody>
+                    {% for album in albums %}
+                        <tr>
+                            <td>{{ album.id }}</td>
+                            <td>{{ album.title }}</td>
+                            <td>{{ album.url }}</td>
+                            <td>
+                                <img class="img-responsive"
+                                     src="{{ vich_uploader_asset(album, 'imageFile') }}"
+                                     alt="{{ album.title }}"
+                                     width="23"> <!--http://placehold.it/900x300-->
+                            </td>
+                            <td>
+                                <a href="{{ path('album_edit', {'id': album.id}) }}"
+                                   class="btn btn-info btn-xs">{% trans %}edit{% endtrans %}</a>
+                                {{ include('album/_delete_form.html.twig', {'album': album}) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-warning">{% trans %}No albums.{% endtrans %}</div>
+        {% endif %}
 
-    <a href="{{ path('album_new') }}" class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus"></span>
-        {% trans %}Create a new album{% endtrans %}
-    </a>
+        <a href="{{ path('album_new') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span>
+            {% trans %}Create a new album{% endtrans %}
+        </a>
+    </div>
+
+    <div class="tab-pane fade in active adminTable well" id="videos ">
+        <h2>{% trans %}List videos{% endtrans %}</h2>
+        {% if videos %}
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th>{% trans %}Id{% endtrans %}</th>
+                        <th>{% trans %}Url{% endtrans %}</th>
+                        <th>{% trans %}Photo{% endtrans %}</th>
+                        <th></th>  <!-- Actions column -->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for video in videos %}
+                        <tr>
+                            <td>{{ video.id }}</td>
+                            <td>{{ video.url }}</td>
+                            <td>
+                                <img class="img-responsive"
+                                     src="{{ vich_uploader_asset(video, 'imageFile') }}"
+                                     alt="video"
+                                     width="23"> <!--http://placehold.it/900x300-->
+                            </td>
+                            <td>
+                                <a href="{{ path('video_edit', {'id': video.id}) }}"
+                                   class="btn btn-info btn-xs">{% trans %}edit{% endtrans %}</a>
+                                {{ include('video/_delete_form.html.twig', {'video': video}) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-warning">{% trans %}No videos.{% endtrans %}</div>
+        {% endif %}
+
+        <a href="{{ path('video_new') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span>
+            {% trans %}Create a new video{% endtrans %}
+        </a>
+    </div>
 {% endblock %}

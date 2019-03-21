@@ -1,0 +1,15 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}{% trans %}Contact{% endtrans %}{% endblock %}
+
+{% block content %}
+
+    <div class="well">
+        <h2>{% trans %}Nous contacter{% endtrans %}</h2>
+
+        <a href="{{ path('content_edit', { 'id': content.id }) }}" class="btn btn-info btn-xs" title="Edit">
+            <span class="glyphicon glyphicon-edit"></span></a>
+        <p>{{ content.bodytext | raw }}</p>
+    </div>
+
+{% endblock %}

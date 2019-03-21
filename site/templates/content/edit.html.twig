@@ -1,0 +1,13 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}{% trans %}Edit content{% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}Edit content{% endtrans %}</h1>
+
+    <div class="well">
+
+        {{ include('content/_form.html.twig', {'button_label': 'Update'}) }}
+
+    </div>
+{% endblock %}

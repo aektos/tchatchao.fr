@@ -3,9 +3,10 @@
 {% block title %}{% trans %}Presentation{% endtrans %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans %}List members{% endtrans %}</h1>
+    <h1>{% trans %}Presentation{% endtrans %}</h1>
 
     <div class="tab-pane fade in active adminTable well" id="members">
+        <h2>{% trans %}List members{% endtrans %}</h2>
         {% if members %}
             <div class="table-responsive">
                 <table class="table table-hover table-condensed">
@@ -50,11 +51,11 @@
         </a>
     </div>
 
-    {#<div class="well">#}
-    {#<h2>Description du groupe</h2>#}
-    {#<a href="{{ path('app_description_edit', { 'id': description.id }) }}" class="btn btn-info btn-xs" title="Edit"><span#}
-    {#class="glyphicon glyphicon-edit"></span></a>#}
-    {#<p>{{ description.content | raw }}</p>#}
-    {#</div>#}
+    <div class="well">
+        <h2>Description du groupe</h2>
+        <a href="{{ path('content_edit', { 'id': content.id }) }}" class="btn btn-info btn-xs" title="Edit">
+            <span class="glyphicon glyphicon-edit"></span></a>
+        <p>{{ content.bodytext | raw }}</p>
+    </div>
 
 {% endblock %}

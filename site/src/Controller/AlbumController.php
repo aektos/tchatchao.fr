@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Tests\Fixtures\Entity;
+use App\Repository\VideoRepository;
 
 /**
  * @Route("/admin/album")
@@ -18,10 +20,11 @@ class AlbumController extends AbstractController
     /**
      * @Route("/", name="album_index", methods={"GET"})
      */
-    public function index(AlbumRepository $albumRepository): Response
+    public function index(AlbumRepository $albumRepository, VideoRepository $videoRepository): Response
     {
         return $this->render('album/index.html.twig', [
             'albums' => $albumRepository->findAll(),
+            'videos' => $videoRepository->findAll(),
         ]);
     }
 
@@ -38,6 +41,8 @@ class AlbumController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($album);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Enregistrement réussi!');
 
             return $this->redirectToRoute('album_index');
         }

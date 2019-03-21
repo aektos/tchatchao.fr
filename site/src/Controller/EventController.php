@@ -39,6 +39,8 @@ class EventController extends AbstractController
             $entityManager->persist($event);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Enregistrement réussi!');
+
             return $this->redirectToRoute('event_index');
         }
 
@@ -68,6 +70,8 @@ class EventController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Enregistrement réussi!');
 
             return $this->redirectToRoute('event_index', [
                 'id' => $event->getId(),

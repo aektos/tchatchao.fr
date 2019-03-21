@@ -55,6 +55,8 @@ class BackgroundController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'Enregistrement réussi!');
+
             return $this->redirectToRoute('background_index', [
                 'id' => $background->getId(),
             ]);

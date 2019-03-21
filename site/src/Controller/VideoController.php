@@ -16,16 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class VideoController extends AbstractController
 {
     /**
-     * @Route("/", name="video_index", methods={"GET"})
-     */
-    public function index(VideoRepository $videoRepository): Response
-    {
-        return $this->render('video/index.html.twig', [
-            'videos' => $videoRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new", name="video_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -38,6 +28,8 @@ class VideoController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($video);
             $entityManager->flush();
+
+            $this->addFlash('success', 'Enregistrement réussi!');
 
             return $this->redirectToRoute('video_index');
         }
@@ -58,6 +50,8 @@ class VideoController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Enregistrement réussi!');
 
             return $this->redirectToRoute('video_index', [
                 'id' => $video->getId(),
