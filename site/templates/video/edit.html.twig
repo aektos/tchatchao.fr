@@ -1,0 +1,15 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}{% trans %}Edit Video{% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}Edit Video{% endtrans %}</h1>
+
+    <div class="well">
+
+        {{ include('video/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('video_index') }}">back to list</a>
+
+    </div>
+{% endblock %}
