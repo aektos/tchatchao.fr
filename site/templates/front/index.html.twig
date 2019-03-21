@@ -1,16 +1,280 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tchatchao{% endblock %}
+{% block meta %}
+    <meta description="Tchatchao propose un répertoire de Baleti aux inspirations et aux tonalités variées mêlant l'accordéon diatonique de Sylvie Boitard, la vielle à roue alto de Jean FranÃ§ois Bosch, les percussions de Pascal Oddo, la basse et la guitare d'Etienne Bosch." />
+
+    <!-- meta tag social network -->
+    <meta property="og:locale" content="fr_FR"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Tchatchao"/>
+    <meta property="og:description" content="Tchatchao propose un répertoire de Baleti aux inspirations et aux tonalités variées mêlant l'accordéon diatonique de Sylvie Boitard, la vielle à roue alto de Jean FranÃ§ois Bosch, les percussions de Pascal Oddo, la basse et la guitare d'Etienne Bosch." />
+    <meta property="og:url" content="{{ absolute_url('app_homepage') }}" />
+    <meta property="og:site_name" content="Tchatchao"/>
+    <meta property="og:image" content="{{ app.request.schemeAndHttpHost }}{{ asset('assets/img/tchatchao_social.jpg') }}"/>
+    <meta property="og:image:width" content="959"/>
+    <meta property="og:image:height" content="540"/>
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:description" content="Tchatchao propose un répertoire de Baleti aux inspirations et aux tonalités variées mêlant l'accordéon diatonique de Sylvie Boitard, la vielle Ã  roue alto de Jean FranÃ§ois Bosch, les percussions de Pascal Oddo, la basse et la guitare d'Etienne Bosch." />
+    <meta name="twitter:title" content="Tchatchao"/>
+    <meta name="twitter:site" content="@tchatchao"/>
+    <meta name="twitter:image" content="{{ app.request.schemeAndHttpHost }}{{ asset('assets/img/tchatchao_logo.jpg') }}"/>
+    <meta name="twitter:creator" content="@tchatchao"/>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>TCHATCHAO</h1>
+    {% include 'partials/menu.html.twig' %}
 
-    The page is under construction!
-</div>
+    <!-- Header -->
+    <header id="page-top" {% if backgrounds.header %}{% if backgrounds.header.imageName %}style="background-image: url({{ vich_uploader_asset(backgrounds.header, 'imageFile') }});"{% endif %}{% endif %}>
+        <div class="container-fluid">
+            <div class="intro-text">
+                <div class="row">
+                    {#<div class="col-md-3 col-md-offset-5 ">#}
+                    {#<iframe style="position: relative; bottom: -250px;" width="100%" height="250" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/22697299&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;visual=false"></iframe>#}
+                    {#</div>#}
+                </div>
+                <div class="intro-lead-in"></div>
+                <div class="intro-heading"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Agenda Section -->
+    <section id="agenda" {% if backgrounds.agenda %}{% if backgrounds.agenda.imageName %}style="background-image: url({{ vich_uploader_asset(backgrounds.agenda, 'imageFile') }});"{% endif %}{% endif %}>
+        <div class="container">
+
+            <div class="row text-center equal-height">
+                {% for event in events %}
+                    <div class="col-md-3 col-sm-4 col-xs-12">
+                        <div class="thumbnail">
+                            {% if event.imageName %}
+                                <img class="img-responsive" src="{{ vich_uploader_asset(event, 'imageFile') }}" alt="{{ event.title }}">
+                            {% endif %}
+                            <h4>{{ event.title }}</h4>
+                            {% if event.information %}<p class="text-muted">{{ event.information }}</p>{% endif %}
+                            {% if event.place %}<p><i class="glyphicon glyphicon-map-marker"></i>{{ event.place }} {% if event.lat %}{% if event.lng %}<a href="https://www.google.com/maps/dir/Current+Location/{{ event.lat }},{{ event.lng }}" class="btn btn-xs btn-primary" target="_blank">Itinéraire</a>{% endif %}{% endif %}</p>{% endif %}
+                            {% if event.date %}<p><i class="glyphicon glyphicon-time"></i>{{ event.date|date("d.M.Y") }} à  {{ event.time|date("H:i") }}</p>{% endif %}
+                            <div class="col-md-12">
+                                <ul class="social-network social-circle">
+                                    {% if event.fb %}<li><a href="{{ event.fb }}" class="icoFacebook" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>{% endif %}
+                                    {% if event.twttr %}<li><a href="{{ event.twttr }}" class="icoTwitter" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>{% endif %}
+                                    {% if event.website %}<li><a href="{{ event.website }}" class="icoGoogle" title="Website" target="_blank"><i class="glyphicon glyphicon-home"></i></a></li>{% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid Section -->
+    <section id="gallery" class="bg-light-gray">
+        <div class="container">
+
+            {% if videos %}
+                <div class="row bottom-space-md">
+                    <div class="col-sm-12">
+                        <div id="video-gallery-tchatchao" class="carousel slide video video-gallery">
+                            <div class="carousel-inner">
+                                {% for video in videos %}
+                                    <div class="item {% if loop.first %}active{% endif %} height-youtube">
+                                        {{ video.url | raw }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a class="left carousel-control" href="#video-gallery-tchatchao" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#video-gallery-tchatchao" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if albums %}
+                <div class="row photo-gallery">
+                    {% for album in albums %}
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <div class="hovereffect">
+                                {% if album.imageName %}
+                                    <img class="img-responsive" src="{{ vich_uploader_asset(album, 'imageFile') }}" alt="{{ album.title }}">
+                                {% endif %}
+                                <div class="overlay">
+                                    <h2>{{ album.title }}</h2>
+                                    <a class="info" href="{{ album.url }}" target="_blank"><i class="hidden-xs fa fa-plus fa-3x"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="bg-light-gray" {% if backgrounds.team %}{% if backgrounds.team.imageName %}style="background-image: url({{ vich_uploader_asset(backgrounds.team, 'imageFile') }});"{% endif %}{% endif %}>
+        <div class="container">
+
+            {% if members %}
+                <div class="row">
+                    {% for member in members %}
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="team-member">
+                                {% if member.imageName %}
+                                    <img class="img-responsive img-circle" src="{{ vich_uploader_asset(member, 'imageFile') }}" alt="{{ member.firstname }}-{{ member.lastname }}-profil">
+                                {% endif %}
+                                <div class="team-member-legend">
+                                    <h4>{{ member.firstname }} {{ member.lastname }}</h4>
+                                    <p class="text-muted">{{ member.function }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {%  endif %}
+
+            {%  if bio %}
+                {%  if bio.bodytext %}
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 well light-well">
+                            <p class="large text-muted text-center">{{ bio.bodytext | raw }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" {% if backgrounds.contact %}{% if backgrounds.contact.imageName %}style="background-image: url({{ vich_uploader_asset(backgrounds.contact, 'imageFile') }});"{% endif %}{% endif %}>
+        <div class="container">
+            <div class="row">
+                <div class="text-center bottom-space-lg">
+                    <h2 class="">Nous contacter</h2>
+                </div>
+            </div>
+            {% if contact %}
+                {% if contact.bodytext %}
+                    <div class="row">
+                        <div class="col-xs-12 col-lg-6 well light-well">
+                            {{ contact.bodytext | raw }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Tchatchao {{ "now"|date("Y") }}</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="social-network social-circle">
+                        <li><a href="{{ fb_page }}" class="icoFacebook" title="Facebook" target="_blank"><i class="fa fa-facebook" ></i></a></li>
+                        <li><a href="{{ youtube_page }}" class="icoYoutube" title="Youtube" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#legals-info">Informations légales</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="legals-info" tabindex="-1" role="dialog" aria-labelledby="legalsInfo" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" id="legalsInfo">Informations légales</h2>
+                </div>
+                <div class="modal-body">
+                    <p class="text-justify">L'utilisation de ce site entraine automatiquement l'acceptation de l'utilisation de cookies et des conditions générales d'utilisation.</p>
+
+                    <h4>Responsable de publication</h4>
+                    <p>L'association Traditions Nouvelles</p>
+                    <p>Chez Mr Bosch jean-François 19 Chemin Sorgentino, "Le Maestro" B 06300 Nice Tel: 04 93 79 98 76 / 06 88 77 49 88</p>
+
+                    <h4>Responsable de conception du site</h4>
+                    <div class="well">
+                        <h5>Nicolas Torre</h5>
+                        <p>
+                            <strong>Développeur web</strong><br>
+                            Github: <a href="https://github.com/nicolastorre" target="_blank" title="github nicolas torre">https://github.com/aektos</a><br>
+                        </p>
+                    </div>
+                    <p>Le design du site a été élaboré à partir du template bootstrap <a href="https://startbootstrap.com/template-overviews/agency/" target="_blank">https://startbootstrap.com/template-overviews/agency/</a></p>
+
+                    <h4>CNIL - Données personnelles</h4>
+                    <p>Le site ne collecte pas de données personnelles.</p>
+                    <p class="text-justify">Cependant, conformément à l'article 34 de la loi n°78-17 du 6 janvier 1978 modifiée, relative à l'informatique, aux fichiers et aux libertés, vous disposez d'un droit d'accès, de rectification, de modification et de suppression des données vous concernant.</p>
+
+                    <h4>Conditions dâ€™utilisation du site</h4>
+                    <p class="text-justify">Le présent site et l'ensemble de son contenu (textes, logos, images, photos, ergonomie ...) sont protégés au titre du droit d'auteur.</p>
+                    <p class="text-justify">L'association Traditions Nouvelles et le responsable de conception ne saurait être tenu responsable d'un quelconque dommage subi par l'ordinateur de l'utilisateur.</p>
+                    <p class="text-justify">Les liens hypertextes mis en place dans le cadre de ce site internet en direction d'autres ressources présentes sur le réseau Internet n'engage pas la responsabilité des responsables de publications et conception.</p>
+
+                    <h4>Cookies</h4>
+                    <p class="text-justify">Le site de l'association Traditions nouvelles utilise des cookies afin de réaliser des statistiques.</p>
+                    <p class="text-justify">Vous pouvez désactiver l'utilisation de "cookies" en configurant votre navigateur.</p>
+
+                    <h4>Hébergement</h4>
+                    <h5>Hostpapa</h5>
+                    <p><a href="https://www.hostpapa.fr" target="_blank">https://www.hostpapa.fr</a></p>
+                    <p><a href="mailto:ventes@hostpapasupport.com">ventes@hostpapasupport.com</a></p>
+                    <p>France 0800 90 71 97</p>
+                    <address>
+                        Royaume-Uni<br>
+                        68 King William Street<br>
+                        London EC4N 7DZ
+                    </address>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <!-- Custom Theme JavaScript -->
+    {% if app.environment == 'prod' %}
+        <script src="{{ asset('assets/js/bundle-dd2977d95c.min.js') }}"></script>
+    {% else %}
+        <script src="{{ asset('assets/js/bundle.js') }}"></script>
+    {% endif %}
+
+    <script>
+        $(document).ready(function() {
+
+            var disclaimer = new window.cookieDisclaimer('body',true, 14, 'tchatchao_disclaimer', 'on');
+        });
+    </script>
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '{{ ga_tracking }}', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
 {% endblock %}

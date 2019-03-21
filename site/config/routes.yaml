@@ -1,3 +1,15 @@
 admin:
     path: /admin
     controller: App\Controller\EventController::index
+
+app_r1:
+  path: /index.htm
+  controller: App\Controller\FrontController::index
+
+app_r2:
+  path: /Calendrier/Calendrier.htm
+  controller: App\Controller\FrontController::index
+
+app_r3:
+  path: /photos/photos.htm
+  controller: App\Controller\FrontController::index

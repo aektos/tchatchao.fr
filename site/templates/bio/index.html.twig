@@ -2,7 +2,7 @@
 
 {% block title %}{% trans %}Presentation{% endtrans %}{% endblock %}
 
-{% block content %}
+{% block body %}
     <h1>{% trans %}Presentation{% endtrans %}</h1>
 
     <div class="tab-pane fade in active adminTable well" id="members">
@@ -57,5 +57,4 @@
             <span class="glyphicon glyphicon-edit"></span></a>
         <p>{{ content.bodytext | raw }}</p>
     </div>
-
 {% endblock %}

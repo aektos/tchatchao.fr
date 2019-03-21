@@ -2,8 +2,7 @@
 
 {% block title %}{% trans %}Contact{% endtrans %}{% endblock %}
 
-{% block content %}
-
+{% block body %}
     <div class="well">
         <h2>{% trans %}Nous contacter{% endtrans %}</h2>
 
@@ -11,5 +10,4 @@
             <span class="glyphicon glyphicon-edit"></span></a>
         <p>{{ content.bodytext | raw }}</p>
     </div>
-
 {% endblock %}

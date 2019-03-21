@@ -5,6 +5,15 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    # Google analytics tracking
+    ga_tracking_dev: ''
+    ga_tracking_prod: ''
+
+    # Tchatchao facebook page
+    fb_page: 'https://www.facebook.com/tchatchao06/'
+
+    # Youtube facebook page
+    youtube_page: 'https://www.youtube.com/channel/UCYSabqAB8tNqqCUglABQagA'
 
 services:
     # default configuration for services in *this* file
