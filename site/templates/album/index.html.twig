@@ -1,0 +1,52 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}Album index{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}List albums{% endtrans %}</h1>
+
+    <div class="tab-pane fade in active adminTable well" id="members">
+
+    {% if albums %}
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed">
+                <thead>
+                <tr>
+                    <th>{% trans %}Id{% endtrans %}</th>
+                    <th>{% trans %}Title{% endtrans %}</th>
+                    <th>{% trans %}Url{% endtrans %}</th>
+                    <th>{% trans %}Photo{% endtrans %}</th>
+                    <th>{% trans %}actions{% endtrans %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for album in albums %}
+                    <tr>
+                        <td>{{ album.id }}</td>
+                        <td>{{ album.title }}</td>
+                        <td>{{ album.url }}</td>
+                        <td>
+                            <img class="img-responsive"
+                                 src="{{ vich_uploader_asset(album, 'imageFile') }}"
+                                 alt="{{ album.title }}"
+                                 width="23"> <!--http://placehold.it/900x300-->
+                        </td>
+                        <td>
+                            <a href="{{ path('album_edit', {'id': album.id}) }}"
+                               class="btn btn-info btn-xs">{% trans %}edit{% endtrans %}</a>
+                            {{ include('album/_delete_form.html.twig', {'album': album}) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-warning">{% trans %}No albums.{% endtrans %}</div>
+    {% endif %}
+
+    <a href="{{ path('album_new') }}" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span>
+        {% trans %}Create a new album{% endtrans %}
+    </a>
+{% endblock %}

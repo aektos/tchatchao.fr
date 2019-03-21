@@ -32,7 +32,7 @@ class Album
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="members", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="albums", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */
@@ -131,5 +131,21 @@ class Album
     public function getImageSize(): ?int
     {
         return $this->imageSize;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 }

@@ -1,0 +1,15 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}New Album{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}Create new Album{% endtrans %}</h1>
+
+    <div class="well">
+
+        {{ include('album/_form.html.twig') }}
+
+        <a href="{{ path('album_index') }}">back to list</a>
+
+    </div>
+{% endblock %}

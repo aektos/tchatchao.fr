@@ -1,0 +1,15 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}Edit Album{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}Edit Album{% endtrans %}</h1>
+
+    <div class="well">
+
+        {{ include('album/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('album_index') }}">back to list</a>
+
+    </div>
+{% endblock %}
