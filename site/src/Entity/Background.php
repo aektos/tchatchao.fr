@@ -13,6 +13,18 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class Background
 {
     /**
+     * Section type
+     *
+     * @var array
+     */
+    static $sectionTypeList = array(
+        "header",
+        "agenda",
+        "team",
+        "contact"
+    );
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -27,7 +39,7 @@ class Background
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="members", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="backgrounds", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */
@@ -114,5 +126,21 @@ class Background
     public function getImageSize(): ?int
     {
         return $this->imageSize;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 }

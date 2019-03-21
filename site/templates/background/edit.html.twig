@@ -1,0 +1,15 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}Edit Background{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}Edit Background{% endtrans %}</h1>
+
+    <div class="well">
+
+        {{ include('background/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <a href="{{ path('background_index') }}">back to list</a>
+
+    </div>
+{% endblock %}

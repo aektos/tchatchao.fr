@@ -1,0 +1,44 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}{% trans %}List Background{% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}List Background{% endtrans %}</h1>
+
+    <div class="tab-pane fade in active adminTable well" id="backgrounds">
+        {% if backgrounds %}
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th>{% trans %}Id{% endtrans %}</th>
+                        <th>{% trans %}Section{% endtrans %}</th>
+                        <th>{% trans %}Photo{% endtrans %}</th>
+                        <th></th>  <!-- Actions column -->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for background in backgrounds %}
+                        <tr>
+                            <td>{{ background.id }}</td>
+                            <td>{{ background.section }}</td>
+                            <td>
+                                <img class="img-responsive"
+                                     src="{{ vich_uploader_asset(background, 'imageFile') }}"
+                                     alt="{{ background.section }}"
+                                     width="23"> <!--http://placehold.it/900x300-->
+                            </td>
+                            <td>
+                                <a href="{{ path('background_edit', {'id': background.id}) }}"
+                                   class="btn btn-info btn-xs">{% trans %}edit{% endtrans %}</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-warning">{% trans %}No backgrounds.{% endtrans %}</div>
+        {% endif %}
+    </div>
+{% endblock %}
