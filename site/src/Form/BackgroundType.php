@@ -14,8 +14,9 @@ class BackgroundType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('section', HiddenType::class)
+            ->add('section', HiddenType::class, ['label' => 'Section'])
             ->add('imageFile',VichImageType::class, [
+                'label' => 'Image',
                 'required' => false,
                 'allow_delete' => true,
                 'image_uri' => true,

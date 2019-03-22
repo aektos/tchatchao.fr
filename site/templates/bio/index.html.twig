@@ -15,7 +15,7 @@
                         <th>{% trans %}Firstname{% endtrans %}</th>
                         <th>{% trans %}Lastname{% endtrans %}</th>
                         <th>{% trans %}Function{% endtrans %}</th>
-                        <th>{% trans %}Avatar{% endtrans %}</th>
+                        <th>{% trans %}Photo{% endtrans %}</th>
                         <th></th>  <!-- Actions column -->
                     </tr>
                     </thead>
@@ -52,8 +52,8 @@
     </div>
 
     <div class="well">
-        <h2>Description du groupe</h2>
-        <a href="{{ path('content_edit', { 'id': content.id }) }}" class="btn btn-info btn-xs" title="Edit">
+        <h2>{% trans %}Description du groupe{% endtrans %}</h2>
+        <a href="{{ path('content_edit', { 'id': content.id }) }}" class="btn btn-info btn-xs" title="{% trans %}Edit{% endtrans %}">
             <span class="glyphicon glyphicon-edit"></span></a>
         <p>{{ content.bodytext | raw }}</p>
     </div>

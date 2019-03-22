@@ -1,6 +1,6 @@
 {% extends 'backoffice.html.twig' %}
 
-{% block title %}Album index{% endblock %}
+{% block title %}{% trans %}Gallery{% endtrans %}{% endblock %}
 
 {% block body %}
     <h1>{% trans %}Gallery{% endtrans %}</h1>
@@ -15,8 +15,8 @@
                         <th>{% trans %}Id{% endtrans %}</th>
                         <th>{% trans %}Title{% endtrans %}</th>
                         <th>{% trans %}Url{% endtrans %}</th>
-                        <th>{% trans %}Photo{% endtrans %}</th>
-                        <th>{% trans %}actions{% endtrans %}</th>
+                        <th>{% trans %}Image{% endtrans %}</th>
+                        <th></th>  <!-- Actions column -->
                     </tr>
                     </thead>
                     <tbody>
@@ -60,7 +60,7 @@
                     <tr>
                         <th>{% trans %}Id{% endtrans %}</th>
                         <th>{% trans %}Url{% endtrans %}</th>
-                        <th>{% trans %}Photo{% endtrans %}</th>
+                        <th>{% trans %}Image{% endtrans %}</th>
                         <th></th>  <!-- Actions column -->
                     </tr>
                     </thead>

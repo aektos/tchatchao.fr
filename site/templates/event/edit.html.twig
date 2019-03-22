@@ -1,15 +1,15 @@
 {% extends 'backoffice.html.twig' %}
 
-{% block title %}Edit Event{% endblock %}
+{% block title %}{% trans %}Edit Event{% endtrans %}{% endblock %}
 
 {% block body %}
-    <h1>Edit Event</h1>
+    <h1>{% trans %}Edit Event{% endtrans %}</h1>
 
     <div class="well">
 
         {{ include('event/_form.html.twig', {'button_label': 'Update'}) }}
 
-        <a href="{{ path('event_index') }}">back to list</a>
+        <a href="{{ path('event_index') }}">{% trans %}back to list{% endtrans %}</a>
 
     </div>
 {% endblock %}
