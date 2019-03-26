@@ -15,6 +15,11 @@ parameters:
     # Youtube facebook page
     youtube_page: 'https://www.youtube.com/channel/UCYSabqAB8tNqqCUglABQagA'
 
+    # Image
+    image_publicDir: '/%kernel.project_dir%/public'
+    image_publicCacheDir: 'cache/images/'
+    image_cacheDir: '/%image_publicDir%/%image_publicCacheDir%'
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -37,3 +42,5 @@ services:
     # please note that last definitions always *replace* previous ones
     App\Service\UserManager:
         arguments: ['@doctrine.orm.entity_manager', '@security.password_encoder']
+    App\Service\Image:
+        arguments: ['%image_publicDir%', '%image_publicCacheDir%', '%image_cacheDir%']

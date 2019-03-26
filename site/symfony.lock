@@ -114,6 +114,12 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "gregwar/cache": {
+        "version": "v1.0.12"
+    },
+    "gregwar/image": {
+        "version": "v2.0.24"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
