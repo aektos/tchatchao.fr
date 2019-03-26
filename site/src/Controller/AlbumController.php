@@ -18,17 +18,6 @@ use App\Repository\VideoRepository;
 class AlbumController extends AbstractController
 {
     /**
-     * @Route("/", name="album_index", methods={"GET"})
-     */
-    public function index(AlbumRepository $albumRepository, VideoRepository $videoRepository): Response
-    {
-        return $this->render('album/index.html.twig', [
-            'albums' => $albumRepository->findAll(),
-            'videos' => $videoRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new", name="album_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -44,7 +33,7 @@ class AlbumController extends AbstractController
 
             $this->addFlash('success', 'Enregistrement réussi!');
 
-            return $this->redirectToRoute('album_index');
+            return $this->redirectToRoute('gallery_index');
         }
 
         return $this->render('album/new.html.twig', [
@@ -64,7 +53,7 @@ class AlbumController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('album_index', [
+            return $this->redirectToRoute('gallery_index', [
                 'id' => $album->getId(),
             ]);
         }
@@ -86,6 +75,6 @@ class AlbumController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('album_index');
+        return $this->redirectToRoute('gallery_index');
     }
 }

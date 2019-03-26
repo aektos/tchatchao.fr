@@ -31,7 +31,7 @@ class VideoController extends AbstractController
 
             $this->addFlash('success', 'Enregistrement réussi!');
 
-            return $this->redirectToRoute('video_index');
+            return $this->redirectToRoute('gallery_index');
         }
 
         return $this->render('video/new.html.twig', [
@@ -53,7 +53,7 @@ class VideoController extends AbstractController
 
             $this->addFlash('success', 'Enregistrement réussi!');
 
-            return $this->redirectToRoute('video_index', [
+            return $this->redirectToRoute('gallery_index', [
                 'id' => $video->getId(),
             ]);
         }
@@ -75,6 +75,6 @@ class VideoController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('video_index');
+        return $this->redirectToRoute('gallery_index');
     }
 }
