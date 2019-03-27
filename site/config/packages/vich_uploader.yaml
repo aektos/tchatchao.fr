@@ -5,6 +5,7 @@ vich_uploader:
         members:
             uri_prefix: /images/members
             upload_destination: '%kernel.project_dir%/public/images/members'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
 
             inject_on_load: false
             delete_on_update: true
@@ -13,6 +14,7 @@ vich_uploader:
         events:
             uri_prefix: /images/events
             upload_destination: '%kernel.project_dir%/public/images/events'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
 
             inject_on_load: false
             delete_on_update: true
@@ -21,6 +23,7 @@ vich_uploader:
         albums:
             uri_prefix: /images/albums
             upload_destination: '%kernel.project_dir%/public/images/albums'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
 
             inject_on_load: false
             delete_on_update: true
@@ -29,6 +32,7 @@ vich_uploader:
         videos:
             uri_prefix: /images/videos
             upload_destination: '%kernel.project_dir%/public/images/videos'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
 
             inject_on_load: false
             delete_on_update: true
@@ -37,6 +41,7 @@ vich_uploader:
         backgrounds:
             uri_prefix: /images/backgrounds
             upload_destination: '%kernel.project_dir%/public/images/backgrounds'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
 
             inject_on_load: false
             delete_on_update: true

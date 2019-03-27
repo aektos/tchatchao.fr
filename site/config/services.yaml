@@ -44,3 +44,8 @@ services:
         arguments: ['@doctrine.orm.entity_manager', '@security.password_encoder']
     App\Service\Image:
         arguments: ['%image_publicDir%', '%image_publicCacheDir%', '%image_cacheDir%']
+
+    App\EventListener\PreRemoveVichUploaderListener:
+        tags:
+            - { name: kernel.event_listener, event: vich_uploader.pre_remove }
+        arguments: ['%image_cacheDir%']
