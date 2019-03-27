@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class AlbumType extends AbstractType
 {
@@ -16,6 +17,7 @@ class AlbumType extends AbstractType
         $builder
             ->add('title', TextType::class, ['label' => 'Title'])
             ->add('url', TextType::class, ['label' => 'URL'])
+            ->add('date',DateType::class, ['label' => 'Date'])
             ->add('imageFile',VichImageType::class, [
                 'label' => 'Image',
                 'required' => false,

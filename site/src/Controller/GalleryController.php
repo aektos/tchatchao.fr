@@ -20,8 +20,8 @@ class GalleryController extends AbstractController
     public function index(AlbumRepository $albumRepository, VideoRepository $videoRepository): Response
     {
         return $this->render('gallery/index.html.twig', [
-            'albums' => $albumRepository->findAll(),
-            'videos' => $videoRepository->findAll(),
+            'albums' => $albumRepository->findBy(array(), array('date' => 'ASC')),
+            'videos' => $videoRepository->findBy(array(), array('date' => 'ASC')),
         ]);
     }
 }

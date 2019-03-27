@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class VideoType extends AbstractType
 {
@@ -15,6 +16,7 @@ class VideoType extends AbstractType
     {
         $builder
             ->add('url', TextType::class, ['label' => 'URL'])
+            ->add('date',DateType::class, ['label' => 'Date'])
             ->add('imageFile',VichImageType::class, [
                 'label' => 'Image',
                 'required' => false,
