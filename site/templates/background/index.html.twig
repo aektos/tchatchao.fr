@@ -13,7 +13,9 @@
                     <tr>
                         <th>{% trans %}Id{% endtrans %}</th>
                         <th>{% trans %}Section{% endtrans %}</th>
-                        <th>{% trans %}Image{% endtrans %}</th>
+                        <th>{% trans %}Large image{% endtrans %}</th>
+                        <th>{% trans %}Medium image{% endtrans %}</th>
+                        <th>{% trans %}Small image{% endtrans %}</th>
                         <th></th>  <!-- Actions column -->
                     </tr>
                     </thead>
@@ -24,9 +26,21 @@
                             <td>{{ background.section }}</td>
                             <td>
                                 <img class="img-responsive"
-                                     src="{{ vich_uploader_asset(background, 'imageFile') }}"
+                                     src="{{ vich_uploader_asset(background, 'largeFile') }}"
                                      alt="{{ background.section }}"
-                                     width="23"> <!--http://placehold.it/900x300-->
+                                     width="23">
+                            </td>
+                            <td>
+                                <img class="img-responsive"
+                                     src="{{ vich_uploader_asset(background, 'mediumFile') }}"
+                                     alt="{{ background.section }}"
+                                     width="23">
+                            </td>
+                            <td>
+                                <img class="img-responsive"
+                                     src="{{ vich_uploader_asset(background, 'smallFile') }}"
+                                     alt="{{ background.section }}"
+                                     width="23">
                             </td>
                             <td>
                                 <a href="{{ path('background_edit', {'id': background.id}) }}"

@@ -30,26 +30,38 @@
 
     {% include 'partials/menu.html.twig' %}
 
-
     <style type="text/css">
         {% for section, background in backgrounds %}
-            {% if background.imageName %}
+            {% if background.largeName %}
+                {% set largeFile = vich_uploader_asset(background, 'largeFile') %}
 
                 @media (min-width: 992px) {
                     #{{ section }} {
-                        background-image: url({{ resize(vich_uploader_asset(background, 'imageFile'), 1440, 719) }});
+                        background-image: url({{ resize(largeFile, 1440, 719) }});
                     }
                 }
+
+                {% if background.mediumName %}
+                    {% set mediumFile = vich_uploader_asset(background, 'mediumFile') %}
+                {% else %}
+                    {% set mediumFile = largeFile %}
+                {% endif %}
 
                 @media (min-width: 768px) and (max-width: 991px) {
                     #{{ section }} {
-                        background-image: url({{ resize(vich_uploader_asset(background, 'imageFile'), 768, 383) }});
+                        background-image: url({{ resize(mediumFile, 768, 383) }});
                     }
                 }
 
+                {% if background.mediumName %}
+                    {% set smallFile = vich_uploader_asset(background, 'smallFile') %}
+                {% else %}
+                    {% set smallFile = largeFile %}
+                {% endif %}
+
                 @media (max-width: 767px) {
                     #{{ section }} {
-                        background-image: url({{ resize(vich_uploader_asset(background, 'imageFile'), 480, 240) }});
+                        background-image: url({{ resize(smallFile, 480, 240) }});
                     }
                 }
             {% endif %}

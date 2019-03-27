@@ -249,6 +249,18 @@
         <source>Contact us</source>
         <target>Contact us</target>
       </trans-unit>
+      <trans-unit id="y2RDKDI" resname="Large image">
+        <source>Large image</source>
+        <target>Large image</target>
+      </trans-unit>
+      <trans-unit id="uea8I8r" resname="Medium image">
+        <source>Medium image</source>
+        <target>Medium image</target>
+      </trans-unit>
+      <trans-unit id="bERgC1C" resname="Small image">
+        <source>Small image</source>
+        <target>Small image</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -15,7 +15,21 @@ class BackgroundType extends AbstractType
     {
         $builder
             ->add('section', HiddenType::class, ['label' => 'Section'])
-            ->add('imageFile',VichImageType::class, [
+            ->add('largeFile',VichImageType::class, [
+                'label' => 'Image',
+                'required' => false,
+                'allow_delete' => true,
+                'image_uri' => true,
+                'download_uri' => false
+            ])
+            ->add('mediumFile',VichImageType::class, [
+                'label' => 'Image',
+                'required' => false,
+                'allow_delete' => true,
+                'image_uri' => true,
+                'download_uri' => false
+            ])
+            ->add('smallFile',VichImageType::class, [
                 'label' => 'Image',
                 'required' => false,
                 'allow_delete' => true,

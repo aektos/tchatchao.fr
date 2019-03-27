@@ -4,11 +4,33 @@
 <div class="form-group">
     <div class="row">
         <div class="col-sm-2">
-            {{ form_label(form.imageFile, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+            {{ form_label(form.largeFile, NULL, { 'label_attr': {'class': 'control-label'}}) }}
         </div>
         <div class="col-sm-4">
-            {{ form_errors(form.imageFile) }}
-            {{ form_widget(form.imageFile) }}
+            {{ form_errors(form.largeFile) }}
+            {{ form_widget(form.largeFile) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.mediumFile, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.mediumFile) }}
+            {{ form_widget(form.mediumFile) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.smallFile, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.smallFile) }}
+            {{ form_widget(form.smallFile) }}
         </div>
     </div>
 </div>

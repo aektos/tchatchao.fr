@@ -29,7 +29,9 @@ class BackgroundController extends AbstractController
             if(!$background) {
                 $background = new Background();
                 $background->setSection($sectionType);
-                $background->setImageName(null);
+                $background->setLargeName(null);
+                $background->setMediumName(null);
+                $background->setSmallName(null);
 
                 $entityManager->persist($background);
                 $entityManager->flush();

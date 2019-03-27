@@ -33,6 +33,8 @@ class FrontController extends AbstractController
             $backgrounds[$sectionType] = $background;
         }
 
+        dump($backgrounds);
+
         // Agenda
         $events = $eventRepository->findBy(array(), array('date' => 'ASC'));
 

@@ -39,25 +39,71 @@ class Background
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="backgrounds", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="backgrounds", fileNameProperty="largeName", size="largeSize")
      *
      * @var File
      */
-    private $imageFile;
+    private $largeFile;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */
-    private $imageName;
+    private $largeName;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      *
      * @var integer
      */
-    private $imageSize;
+    private $largeSize;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="backgrounds", fileNameProperty="mediumName", size="mediumSize")
+     *
+     * @var File
+     */
+    private $mediumFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $mediumName;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @var integer
+     */
+    private $mediumSize;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="backgrounds", fileNameProperty="smallName", size="smallSize")
+     *
+     * @var File
+     */
+    private $smallFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
+     * @var string
+     */
+    private $smallName;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     *
+     * @var integer
+     */
+    private $smallSize;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -92,40 +138,112 @@ class Background
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $imageFile
      */
-    public function setImageFile(?File $imageFile = null): void
+    public function setLargeFile(?File $largeFile = null): void
     {
-        $this->imageFile = $imageFile;
+        $this->largeFile = $largeFile;
 
-        if (null !== $imageFile) {
+        if (null !== $largeFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
         }
     }
 
-    public function getImageFile(): ?File
+    public function getLargeFile(): ?File
     {
-        return $this->imageFile;
+        return $this->largeFile;
     }
 
-    public function setImageName(?string $imageName): void
+    public function setLargeName(?string $largeName): void
     {
-        $this->imageName = $imageName;
+        $this->largeName = $largeName;
     }
 
-    public function getImageName(): ?string
+    public function getLargeName(): ?string
     {
-        return $this->imageName;
+        return $this->largeName;
     }
 
-    public function setImageSize(?int $imageSize): void
+    public function setLargeSize(?int $largeSize): void
     {
-        $this->imageSize = $imageSize;
+        $this->largeSize = $largeSize;
     }
 
-    public function getImageSize(): ?int
+    public function getLargeSize(): ?int
     {
-        return $this->imageSize;
+        return $this->largeSize;
+    }
+
+    public function setMediumFile(?File $mediumFile = null): void
+    {
+        $this->mediumFile = $mediumFile;
+
+        if (null !== $mediumFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getMediumFile(): ?File
+    {
+        return $this->mediumFile;
+    }
+
+    public function setMediumName(?string $mediumName): void
+    {
+        $this->mediumName = $mediumName;
+    }
+
+    public function getMediumName(): ?string
+    {
+        return $this->mediumName;
+    }
+
+    public function setMediumSize(?int $mediumSize): void
+    {
+        $this->mediumSize = $mediumSize;
+    }
+
+    public function getMediumSize(): ?int
+    {
+        return $this->mediumSize;
+    }
+
+    public function setSmallFile(?File $smallFile = null): void
+    {
+        $this->smallFile = $smallFile;
+
+        if (null !== $smallFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getSmallFile(): ?File
+    {
+        return $this->smallFile;
+    }
+
+    public function setSmallName(?string $smalleName): void
+    {
+        $this->smallName = $smalleName;
+    }
+
+    public function getSmallName(): ?string
+    {
+        return $this->smallName;
+    }
+
+    public function setSmallSize(?int $smallSize): void
+    {
+        $this->smallSize = $smallSize;
+    }
+
+    public function getSmallSize(): ?int
+    {
+        return $this->smallSize;
     }
 
     /**
