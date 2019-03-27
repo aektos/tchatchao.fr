@@ -32,39 +32,40 @@
 
     <style type="text/css">
         {% for section, background in backgrounds %}
-            {% if background.largeName %}
-                {% set largeFile = vich_uploader_asset(background, 'largeFile') %}
+        {% if background.largeName %}
+        {% set largeFile = vich_uploader_asset(background, 'largeFile') %}
 
-                @media (min-width: 992px) {
-                    #{{ section }} {
-                        background-image: url({{ resize(largeFile, 1440, 719) }});
-                    }
-                }
+        @media (min-width: 992px) {
+        #{{ section }} {
+            background-image: url({{ resize(largeFile, 1440, 719) }});
+        }
+        }
 
-                {% if background.mediumName %}
-                    {% set mediumFile = vich_uploader_asset(background, 'mediumFile') %}
-                {% else %}
-                    {% set mediumFile = largeFile %}
-                {% endif %}
+        {% if background.mediumName %}
+        {% set mediumFile = vich_uploader_asset(background, 'mediumFile') %}
+        {% else %}
+        {% set mediumFile = largeFile %}
+        {% endif %}
 
-                @media (min-width: 768px) and (max-width: 991px) {
-                    #{{ section }} {
-                        background-image: url({{ resize(mediumFile, 768, 383) }});
-                    }
-                }
+        @media (min-width: 768px) and (max-width: 991px) {
+        #{{ section }} {
+            background-image: url({{ resize(mediumFile, 768, 383) }});
+        }
+        }
 
-                {% if background.smallName %}
-                    {% set smallFile = vich_uploader_asset(background, 'smallFile') %}
-                {% else %}
-                    {% set smallFile = largeFile %}
-                {% endif %}
+        {% if background.smallName %}
+        {% set smallFile = vich_uploader_asset(background, 'smallFile') %}
+        {% else %}
+        {% set smallFile = largeFile %}
+        {% endif %}
 
-                @media (max-width: 767px) {
-                    #{{ section }} {
-                        background-image: url({{ resize(smallFile, 480, 240) }});
-                    }
-                }
-            {% endif %}
+        @media (max-width: 767px) {
+        #{{ section }} {
+            background-image: url({{ resize(smallFile, 480, 240) }});
+        }
+        }
+
+        {% endif %}
         {% endfor %}
     </style>
 
@@ -133,41 +134,62 @@
             {% if videos %}
                 <div class="row bottom-space-md">
                     <div class="col-sm-12">
-                        <div id="video-gallery-tchatchao" class="carousel slide video video-gallery">
-                            <div class="carousel-inner">
-                                {% for video in videos %}
-                                    <div class="item {% if loop.first %}active{% endif %} height-youtube">
-                                        {{ video.url | raw }}
-                                    </div>
-                                {% endfor %}
-                            </div>
-                            <a class="left carousel-control" href="#video-gallery-tchatchao" role="button"
-                               data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#video-gallery-tchatchao" role="button"
-                               data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
+                        {% set first_video = videos|first %}
+                        <iframe src="{{ first_video.url }}"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen="" width="100%" height="500" frameborder="0"></iframe>
                     </div>
                 </div>
             {% endif %}
 
-            {% if albums %}
+            {% if videos or albums %}
                 <div class="row photo-gallery">
+                    {% for video in videos %}
+                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                            <div class="hovereffect">
+                                {% if video.imageName %}
+                                    <img class="img-responsive"
+                                         src="{{ resize(vich_uploader_asset(video, 'imageFile'), 500, 300) }}"
+                                         alt="title">
+                                {% endif %}
+                                <div class="overlay">
+                                    <a class="visible-xs info" href="{{ video.url }}" target="_blank">
+                                        <i class="hidden-xs fa fa-play fa-3x"></i>
+                                    </a>
+                                    <a class="hidden-xs info" href="{{ video.url }}" data-toggle="modal" data-target="#video-{{ loop.index }}">
+                                        <i class="hidden-xs fa fa-play fa-3x"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="video-{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="video-{{ loop.index }}"
+                                 aria-hidden="true">
+                                <div class="modal-dialog" style="width: 900px;">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <iframe src="{{ video.url }}"
+                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen="" width="100%" height="500" frameborder="0"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
                     {% for album in albums %}
                         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                             <div class="hovereffect">
                                 {% if album.imageName %}
                                     <img class="img-responsive"
-                                         src="{{ resize(vich_uploader_asset(album, 'imageFile'), 300, 200) }}"
+                                         src="{{ resize(vich_uploader_asset(album, 'imageFile'), 500, 300) }}"
                                          alt="{{ album.title }}">
                                 {% endif %}
                                 <div class="overlay">
                                     <h2>{{ album.title }}</h2>
-                                    <a class="info" href="{{ album.url }}" target="_blank"><i
-                                                class="hidden-xs fa fa-plus fa-3x"></i></a>
+                                    <a class="info" href="{{ album.url }}" target="_blank">
+                                        <i class="hidden-xs fa fa-plus fa-3x"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -332,11 +354,7 @@
 {% block javascripts %}
 
     <!-- Custom Theme JavaScript -->
-    {% if app.environment == 'prod' %}
-        <script src="{{ asset('assets/js/bundle-dd2977d95c.min.js') }}"></script>
-    {% else %}
-        <script src="{{ asset('assets/js/bundle.js') }}"></script>
-    {% endif %}
+    <script src="{{ asset('assets/js/bundle.js') }}"></script>
 
     <script>
         $(document).ready(function () {
