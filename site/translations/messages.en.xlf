@@ -261,6 +261,42 @@
         <source>Small image</source>
         <target>Small image</target>
       </trans-unit>
+      <trans-unit id="C8ggYME" resname="Ip">
+        <source>Ip</source>
+        <target>Ip</target>
+      </trans-unit>
+      <trans-unit id="3okc93K" resname="Useragent">
+        <source>Useragent</source>
+        <target>Useragent</target>
+      </trans-unit>
+      <trans-unit id="cDHtvPn" resname="Failure">
+        <source>Failure</source>
+        <target>Failure</target>
+      </trans-unit>
+      <trans-unit id="ZOfiLxq" resname="Tstamp">
+        <source>Tstamp</source>
+        <target>Tstamp</target>
+      </trans-unit>
+      <trans-unit id="CwIR0Xr" resname="No authlogs.">
+        <source>No authlogs.</source>
+        <target>No authlogs.</target>
+      </trans-unit>
+      <trans-unit id="6iEA3Im" resname="Logs">
+        <source>Logs</source>
+        <target>Logs</target>
+      </trans-unit>
+      <trans-unit id="aLvCbBl" resname="List failure authentication logs">
+        <source>List failure authentication logs</source>
+        <target>List failure authentication logs</target>
+      </trans-unit>
+      <trans-unit id="OFJKxqj" resname="Failure auth Logs">
+        <source>Failure auth Logs</source>
+        <target>Failure auth Logs</target>
+      </trans-unit>
+      <trans-unit id="tP49Up3" resname="Exception">
+        <source>Exception</source>
+        <target>Exception</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

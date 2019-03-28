@@ -20,6 +20,8 @@ parameters:
     image_publicCacheDir: 'cache/images/'
     image_cacheDir: '/%image_publicDir%/%image_publicCacheDir%'
 
+    auth_limitedtime: 1
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -49,3 +51,7 @@ services:
         tags:
             - { name: kernel.event_listener, event: vich_uploader.pre_remove }
         arguments: ['%image_cacheDir%']
+    App\Security\AuthenticationFailureListener:
+        tags:
+            - { name: kernel.event_listener, event: security.authentication.failure }
+        arguments: ['@doctrine.orm.entity_manager']

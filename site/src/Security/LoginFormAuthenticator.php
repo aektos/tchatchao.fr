@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use App\Entity\Authlog;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -63,6 +64,12 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException();
+        }
+
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
+        $failedAuthlog = $this->entityManager->getRepository(Authlog::class)->countFailedAuthInLimitedTime($ipaddress, 10); // @todo: inject parameters to add '10' as nb_limitedtime in a parameter
+        if (isset($failedAuthlog['nb_failedauth']) && $failedAuthlog['nb_failedauth'] > 3) { // @todo: inject parameters to add '3' as nb_max_failedauth in a parameter
+            throw new CustomUserMessageAuthenticationException('You try too many times to login. Wait some times and retry or contact your administrator!');
         }
 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['username' => $credentials['username']]);

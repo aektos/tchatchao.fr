@@ -1,0 +1,46 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}{% trans %}List failure authentication logs{% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}List failure authentication logs{% endtrans %}</h1>
+
+    <div class="tab-pane fade in active adminTable well" id="authlogs">
+        <div class="row">
+            <div class="col-sm-2">
+                {{ include('authlog/_delete_form.html.twig') }}
+            </div>
+        </div>
+
+        {% if authlogs %}
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th>{% trans %}Id{% endtrans %}</th>
+                        <th>{% trans %}Ip{% endtrans %}</th>
+                        <th>{% trans %}Useragent{% endtrans %}</th>
+                        <th>{% trans %}Failure{% endtrans %}</th>
+                        <th>{% trans %}Exception{% endtrans %}</th>
+                        <th>{% trans %}Tstamp{% endtrans %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for authlog in authlogs %}
+                        <tr>
+                            <td>{{ authlog.id }}</td>
+                            <td>{{ authlog.ip }}</td>
+                            <td>{{ authlog.useragent }}</td>
+                            <td>{{ authlog.failure ? 'Yes' : 'No' }}</td>
+                            <td>{{ authlog.exception }}</td>
+                            <td>{{ authlog.tstamp|date("d/m/Y H:i:s") }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-warning">{% trans %}No authlogs.{% endtrans %}</div>
+        {% endif %}
+    </div>
+{% endblock %}
