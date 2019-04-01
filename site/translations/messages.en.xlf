@@ -297,6 +297,34 @@
         <source>Exception</source>
         <target>Exception</target>
       </trans-unit>
+      <trans-unit id="weUPhjC" resname="New dance">
+        <source>New dance</source>
+        <target>New dance</target>
+      </trans-unit>
+      <trans-unit id="T4To7PM" resname="Create new dance">
+        <source>Create new dance</source>
+        <target>Create new dance</target>
+      </trans-unit>
+      <trans-unit id="B1VGh2m" resname="Edit dance">
+        <source>Edit dance</source>
+        <target>Edit dance</target>
+      </trans-unit>
+      <trans-unit id="I9LXNUP" resname="Dance">
+        <source>Dance</source>
+        <target>Dance</target>
+      </trans-unit>
+      <trans-unit id="mP1YTwg" resname="List dances">
+        <source>List dances</source>
+        <target>List dances</target>
+      </trans-unit>
+      <trans-unit id="YztoOkC" resname="No dances.">
+        <source>No dances.</source>
+        <target>No dances.</target>
+      </trans-unit>
+      <trans-unit id="AYhI5_M" resname="Create a new dance">
+        <source>Create a new dance</source>
+        <target>Create a new dance</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

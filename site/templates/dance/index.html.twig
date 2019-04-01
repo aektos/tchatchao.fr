@@ -1,0 +1,50 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}{% trans %}List dances{% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %}List dances{% endtrans %}</h1>
+
+    <div class="tab-pane fade in active adminTable well" id="dances-bo">
+        {% if dances %}
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th>{% trans %}Id{% endtrans %}</th>
+                        <th>{% trans %}Url{% endtrans %}</th>
+                        <th>{% trans %}Image{% endtrans %}</th>
+                        <th></th>  <!-- Actions column -->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dance in dances %}
+                        <tr>
+                            <td>{{ dance.id }}</td>
+                            <td>{{ dance.url }}</td>
+                            <td>
+                                <img class="img-responsive"
+                                     src="{{ vich_uploader_asset(dance, 'imageFile') }}"
+                                     alt="dance"
+                                     width="23"> <!--http://placehold.it/900x300-->
+                            </td>
+                            <td>
+                                <a href="{{ path('dance_edit', {'id': dance.id}) }}"
+                                   class="btn btn-info btn-xs">{% trans %}edit{% endtrans %}</a>
+                                {{ include('dance/_delete_form.html.twig', {'dance': dance}) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-warning">{% trans %}No dances.{% endtrans %}</div>
+        {% endif %}
+
+        <a href="{{ path('dance_new') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span>
+            {% trans %}Create a new dance{% endtrans %}
+        </a>
+    </div>
+{% endblock %}

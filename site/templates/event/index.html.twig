@@ -6,52 +6,53 @@
     <h1>{% trans %}List events{% endtrans %}</h1>
 
     <div class="tab-pane fade in active adminTable well" id="events">
-    {% if events %}
-        <div class="table-responsive">
-            <table class="table table-hover table-condensed">
-                <thead>
-                <tr>
-                    <th>{% trans %}Id{% endtrans %}</th>
-                    <th>{% trans %}Title{% endtrans %}</th>
-                    <th>{% trans %}Date{% endtrans %}</th>
-                    <th>{% trans %}Time{% endtrans %}</th>
-                    <th>{% trans %}Place{% endtrans %}</th>
-                    <th>{% trans %}UpdatedAt{% endtrans %}</th>
-                    <th>{% trans %}Image{% endtrans %}</th>
-                    <th></th>  <!-- Actions column -->
-                </tr>
-                </thead>
-                <tbody>
-                {% for event in events %}
+        {% if events %}
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
                     <tr>
-                        <td>{{ event.id }}</td>
-                        <td>{{ event.title }}</td>
-                        <td>{{ event.date ? event.date|date('Y-m-d') : '' }}</td>
-                        <td>{{ event.time ? event.time|date('H:i:s') : '' }}</td>
-                        <td>{{ event.place }}</td>
-                        <td>{{ event.updatedAt ? event.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                        <td>
-                            <img class="img-responsive"
-                                 src="{{ vich_uploader_asset(event, 'imageFile') }}"
-                                 alt="{{ event.title }}"
-                                 width="23"> <!--http://placehold.it/900x300-->
-                        </td>
-                        <td>
-                            <a href="{{ path('event_edit', {'id': event.id}) }}"
-                               class="btn btn-info btn-xs">{% trans %}edit{% endtrans %}</a>
-                            {{ include('event/_delete_form.html.twig', {'event': event}) }}
-                        </td>
+                        <th>{% trans %}Id{% endtrans %}</th>
+                        <th>{% trans %}Title{% endtrans %}</th>
+                        <th>{% trans %}Date{% endtrans %}</th>
+                        <th>{% trans %}Time{% endtrans %}</th>
+                        <th>{% trans %}Place{% endtrans %}</th>
+                        <th>{% trans %}UpdatedAt{% endtrans %}</th>
+                        <th>{% trans %}Image{% endtrans %}</th>
+                        <th></th>  <!-- Actions column -->
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    {% else %}
-        <div class="alert alert-warning">{% trans %}No events.{% endtrans %}</div>
-    {% endif %}
+                    </thead>
+                    <tbody>
+                    {% for event in events %}
+                        <tr>
+                            <td>{{ event.id }}</td>
+                            <td>{{ event.title }}</td>
+                            <td>{{ event.date ? event.date|date('Y-m-d') : '' }}</td>
+                            <td>{{ event.time ? event.time|date('H:i:s') : '' }}</td>
+                            <td>{{ event.place }}</td>
+                            <td>{{ event.updatedAt ? event.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                            <td>
+                                <img class="img-responsive"
+                                     src="{{ vich_uploader_asset(event, 'imageFile') }}"
+                                     alt="{{ event.title }}"
+                                     width="23"> <!--http://placehold.it/900x300-->
+                            </td>
+                            <td>
+                                <a href="{{ path('event_edit', {'id': event.id}) }}"
+                                   class="btn btn-info btn-xs">{% trans %}edit{% endtrans %}</a>
+                                {{ include('event/_delete_form.html.twig', {'event': event}) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-warning">{% trans %}No events.{% endtrans %}</div>
+        {% endif %}
 
-    <a href="{{ path('event_new') }}" class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus"></span>
-        {% trans %}Create a new event{% endtrans %}
-    </a>
+        <a href="{{ path('event_new') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span>
+            {% trans %}Create a new event{% endtrans %}
+        </a>
+    </div>
 {% endblock %}

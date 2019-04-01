@@ -9,6 +9,7 @@ use App\Repository\EventRepository;
 use App\Repository\MemberRepository;
 use App\Repository\ContentRepository;
 use App\Repository\VideoRepository;
+use App\Repository\DanceRepository;
 use App\Repository\AlbumRepository;
 use App\Entity\Background;
 
@@ -23,6 +24,7 @@ class FrontController extends AbstractController
                           MemberRepository $memberRepository,
                           ContentRepository $contentRepository,
                           VideoRepository $videoRepository,
+                          DanceRepository $danceRepository,
                           AlbumRepository $albumRepository)
     {
 
@@ -40,6 +42,9 @@ class FrontController extends AbstractController
         $videos = $videoRepository->findBy(array(), array('date' => 'ASC'));
         $albums = $albumRepository->findBy(array(), array('date' => 'ASC'));
 
+        // Dances
+        $dances = $danceRepository->findBy(array(), array('date' => 'ASC'));
+
         // Présentation du groupe
         $members = $memberRepository->findBy(array(), array('lastname' => 'ASC'));
         $bio = $contentRepository->findOneBy(array('section' => 'bio'));
@@ -51,6 +56,7 @@ class FrontController extends AbstractController
             "events" => $events,
             "videos" => $videos,
             "albums" => $albums,
+            "dances" => $dances,
             "members" => $members,
             "bio" => $bio,
             "contact" => $contact

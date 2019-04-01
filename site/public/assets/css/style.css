@@ -430,19 +430,12 @@ section h3.section-subheading {
   margin: 15px 0;
   text-transform: none;
 }
+#dances,
 #gallery {
   background-color: #222;
 }
 #gallery .video-gallery {
   background-color: #777;
-}
-#gallery .video-gallery .carousel-caption {
-  bottom: 0;
-  margin: 0;
-  padding: 5px;
-}
-#gallery .video-gallery .carousel-indicators {
-  bottom: 85px;
 }
 #gallery .video-gallery .height-youtube {
   height: 500px;
@@ -454,6 +447,7 @@ section h3.section-subheading {
 #gallery .photo-gallery .thumb {
   margin-bottom: 15px;
 }
+#dances .dance-gallery .hovereffect,
 #gallery .photo-gallery .hovereffect {
   width: 100%;
   height: 100%;
@@ -463,6 +457,7 @@ section h3.section-subheading {
   text-align: center;
   cursor: default;
 }
+#dances .dance-gallery .hovereffect .overlay,
 #gallery .photo-gallery .hovereffect .overlay {
   width: 100%;
   height: 100%;
@@ -473,14 +468,18 @@ section h3.section-subheading {
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
+#dances .dance-gallery .hovereffect:hover .overlay,
 #gallery .photo-gallery .hovereffect:hover .overlay {
   background-color: rgba(170, 170, 170, 0.4);
 }
+#dances .dance-gallery .hovereffect h2,
+#dances .dance-gallery .hovereffect img,
 #gallery .photo-gallery .hovereffect h2,
 #gallery .photo-gallery .hovereffect img {
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
+#dances .dance-gallery .hovereffect img,
 #gallery .photo-gallery .hovereffect img {
   display: block;
   position: relative;
@@ -488,11 +487,13 @@ section h3.section-subheading {
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
+#dances .dance-gallery .hovereffect:hover img,
 #gallery .photo-gallery .hovereffect:hover img {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
 }
+#dances .dance-gallery .hovereffect h2,
 #gallery .photo-gallery .hovereffect h2 {
   text-transform: uppercase;
   color: #fff;
@@ -504,6 +505,7 @@ section h3.section-subheading {
   padding: 10px;
   background: rgba(0, 0, 0, 0.6);
 }
+#dances .dance-gallery .hovereffect a.info,
 #gallery .photo-gallery .hovereffect a.info {
   display: inline-block;
   text-decoration: none;
@@ -528,6 +530,7 @@ section h3.section-subheading {
   left: 0%;
   padding: 70px;
 }
+#dances .dance-gallery .hovereffect:hover a.info,
 #gallery .photo-gallery .hovereffect:hover a.info {
   opacity: 1;
   -webkit-transform: scale(1);
@@ -536,6 +539,7 @@ section h3.section-subheading {
   background-color: rgba(254, 209, 54, 0.7);
 }
 @media (min-width: 767px) {
+  #dances .dance-item,
   #gallery .gallery-item {
     margin: 0 0 30px;
   }

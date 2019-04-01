@@ -156,20 +156,23 @@
                                     <a class="visible-xs info" href="{{ video.url }}" target="_blank">
                                         <i class="hidden-xs fa fa-play fa-3x"></i>
                                     </a>
-                                    <a class="hidden-xs info" href="{{ video.url }}" data-toggle="modal" data-target="#video-{{ loop.index }}">
+                                    <a class="hidden-xs info" href="{{ video.url }}" data-toggle="modal"
+                                       data-target="#video-{{ loop.index }}">
                                         <i class="hidden-xs fa fa-play fa-3x"></i>
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="modal fade" id="video-{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="video-{{ loop.index }}"
+                            <div class="modal fade" id="video-{{ loop.index }}" tabindex="-1" role="dialog"
+                                 aria-labelledby="video-{{ loop.index }}"
                                  aria-hidden="true">
                                 <div class="modal-dialog" style="width: 900px;">
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             <iframe src="{{ video.url }}"
                                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen="" width="100%" height="500" frameborder="0"></iframe>
+                                                    allowfullscreen="" width="100%" height="500"
+                                                    frameborder="0"></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -198,6 +201,65 @@
             {% endif %}
         </div>
     </section>
+
+
+    <!-- Gallery Grid Section -->
+    {% if dances %}
+        <section id="dances" class="bg-light-gray">
+            <div class="container">
+                {% if dances %}
+                    <div class="row bottom-space-md">
+                        <div class="col-sm-12">
+                            {% set first_video = dances|first %}
+                            <iframe src="{{ first_video.url }}"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen="" width="100%" height="500" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if dances %}
+                    <div class="row dance-gallery">
+                        {% for dance in dances %}
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="hovereffect">
+                                    {% if dance.imageName %}
+                                        <img class="img-responsive"
+                                             src="{{ resize(vich_uploader_asset(dance, 'imageFile'), 500, 300) }}"
+                                             alt="title">
+                                    {% endif %}
+                                    <div class="overlay">
+                                        <a class="visible-xs info" href="{{ dance.url }}" target="_blank">
+                                            <i class="hidden-xs fa fa-play fa-3x"></i>
+                                        </a>
+                                        <a class="hidden-xs info" href="{{ dance.url }}" data-toggle="modal"
+                                           data-target="#dance-{{ loop.index }}">
+                                            <i class="hidden-xs fa fa-play fa-3x"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="dance-{{ loop.index }}" tabindex="-1" role="dialog"
+                                     aria-labelledby="dance-{{ loop.index }}"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog" style="width: 900px;">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <iframe src="{{ dance.url }}"
+                                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                        allowfullscreen="" width="100%" height="500"
+                                                        frameborder="0"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+    {% endif %}
 
     <!-- Team Section -->
     <section id="team" class="bg-light-gray">

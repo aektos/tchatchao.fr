@@ -22,18 +22,35 @@
                     <a href="#page-top"></a>
                 </li>
 
+                {% if events %}
                 <li>
                     <a class="page-scroll" href="#agenda">Agenda</a>
                 </li>
+                {% endif %}
+
+                {% if videos or albums %}
                 <li>
                     <a class="page-scroll" href="#gallery">Galerie</a>
                 </li>
+                {% endif %}
+
+                {% if dances %}
+                <li>
+                    <a class="page-scroll" href="#dances">Danses</a>
+                </li>
+                {% endif %}
+
+                {% if members or bio %}
                 <li>
                     <a class="page-scroll" href="#team">Présentation</a>
                 </li>
+                {% endif %}
+
+                {% if contact %}
                 <li>
                     <a class="page-scroll" href="#contact">Contact</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
         <!-- /.navbar-collapse -->

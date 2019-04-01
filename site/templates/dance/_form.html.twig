@@ -1,0 +1,45 @@
+{{ form_start(form, { 'attr': {'class': 'form-horizontal'} }) }}
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.url, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.url) }}
+            {{ form_widget(form.url, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.date, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.date) }}
+            {{ form_widget(form.date.day) }}
+            {{ form_widget(form.date.month) }}
+            {{ form_widget(form.date.year) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2">
+            {{ form_label(form.imageFile, NULL, { 'label_attr': {'class': 'control-label'}}) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_errors(form.imageFile) }}
+            {{ form_widget(form.imageFile) }}
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+            <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}
