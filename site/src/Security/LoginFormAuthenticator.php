@@ -67,8 +67,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         }
 
         $ipaddress = $_SERVER['REMOTE_ADDR'];
-        $failedAuthlog = $this->entityManager->getRepository(Authlog::class)->countFailedAuthInLimitedTime($ipaddress, 10); // @todo: inject parameters to add '10' as nb_limitedtime in a parameter
-        if (isset($failedAuthlog['nb_failedauth']) && $failedAuthlog['nb_failedauth'] > 3) { // @todo: inject parameters to add '3' as nb_max_failedauth in a parameter
+        $authlogRepository = $this->entityManager->getRepository(Authlog::class);
+        $failedAuthlog = $authlogRepository->countFailedAuthInLimitedTime($ipaddress, 10); // @todo: inject parameters to add '10' as nb_limitedtime in a parameter
+        $authlog = $authlogRepository->getLastFailedAuthByIp($ipaddress);
+        if (isset($failedAuthlog['nb_failedauth']) && $failedAuthlog['nb_failedauth'] > 3 && $authlog->getTstamp() > date('U')-(60*10)) { // @todo: inject parameters to add '3' as nb_max_failedauth in a parameter
             throw new CustomUserMessageAuthenticationException('You try too many times to login. Wait some times and retry or contact your administrator!');
         }
 

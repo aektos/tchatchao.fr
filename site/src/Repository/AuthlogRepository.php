@@ -49,6 +49,25 @@ class AuthlogRepository extends ServiceEntityRepository
     }
 
     /**
+     * getLastFailedAuthByIp
+     *
+     * @param $ipaddress
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getLastFailedAuthByIp($ipaddress) {
+
+        $qb = $this->createQueryBuilder('a')
+            ->andWhere('a.ip = :ip')
+            ->setParameter('ip', $ipaddress)
+            ->orderBy('a.tstamp', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        return $qb->getOneOrNullResult();
+    }
+
+    /**
      * @return mixed
      */
     public function deleteAll()
