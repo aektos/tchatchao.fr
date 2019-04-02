@@ -21,7 +21,7 @@ class DanceController extends AbstractController
     public function index(DanceRepository $danceRepository): Response
     {
         return $this->render('dance/index.html.twig', [
-            'dances' => $danceRepository->findAll(),
+            'dances' => $danceRepository->findAll(array(), array('date' => 'DESC')),
         ]);
     }
 

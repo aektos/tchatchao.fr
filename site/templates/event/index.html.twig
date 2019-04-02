@@ -16,7 +16,6 @@
                         <th>{% trans %}Date{% endtrans %}</th>
                         <th>{% trans %}Time{% endtrans %}</th>
                         <th>{% trans %}Place{% endtrans %}</th>
-                        <th>{% trans %}UpdatedAt{% endtrans %}</th>
                         <th>{% trans %}Image{% endtrans %}</th>
                         <th></th>  <!-- Actions column -->
                     </tr>
@@ -29,7 +28,6 @@
                             <td>{{ event.date ? event.date|date('Y-m-d') : '' }}</td>
                             <td>{{ event.time ? event.time|date('H:i:s') : '' }}</td>
                             <td>{{ event.place }}</td>
-                            <td>{{ event.updatedAt ? event.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                             <td>
                                 <img class="img-responsive"
                                      src="{{ vich_uploader_asset(event, 'imageFile') }}"

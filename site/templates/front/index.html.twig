@@ -32,40 +32,38 @@
 
     <style type="text/css">
         {% for section, background in backgrounds %}
-        {% if background.largeName %}
-        {% set largeFile = vich_uploader_asset(background, 'largeFile') %}
+            {% if background.largeName %}
+                {% set largeFile = vich_uploader_asset(background, 'largeFile') %}
+                @media (min-width: 992px) {
+                    #{{ section }} {
+                        background-image: url({{ resize(largeFile, 1440, 719) }});
+                    }
+                }
 
-        @media (min-width: 992px) {
-        #{{ section }} {
-            background-image: url({{ resize(largeFile, 1440, 719) }});
-        }
-        }
+                {% if background.mediumName %}
+                    {% set mediumFile = vich_uploader_asset(background, 'mediumFile') %}
+                {% else %}
+                    {% set mediumFile = largeFile %}
+                {% endif %}
 
-        {% if background.mediumName %}
-        {% set mediumFile = vich_uploader_asset(background, 'mediumFile') %}
-        {% else %}
-        {% set mediumFile = largeFile %}
-        {% endif %}
+                @media (min-width: 768px) and (max-width: 991px) {
+                    #{{ section }} {
+                        background-image: url({{ resize(mediumFile, 768, 383) }});
+                    }
+                }
 
-        @media (min-width: 768px) and (max-width: 991px) {
-        #{{ section }} {
-            background-image: url({{ resize(mediumFile, 768, 383) }});
-        }
-        }
+                {% if background.smallName %}
+                    {% set smallFile = vich_uploader_asset(background, 'smallFile') %}
+                {% else %}
+                    {% set smallFile = largeFile %}
+                {% endif %}
+                @media (max-width: 767px) {
+                    #{{ section }} {
+                        background-image: url({{ resize(smallFile, 480, 240) }});
+                    }
+                }
 
-        {% if background.smallName %}
-        {% set smallFile = vich_uploader_asset(background, 'smallFile') %}
-        {% else %}
-        {% set smallFile = largeFile %}
-        {% endif %}
-
-        @media (max-width: 767px) {
-        #{{ section }} {
-            background-image: url({{ resize(smallFile, 480, 240) }});
-        }
-        }
-
-        {% endif %}
+            {% endif %}
         {% endfor %}
     </style>
 
@@ -85,122 +83,141 @@
         </div>
     </header>
 
-    <!-- Agenda Section -->
-    <section id="agenda">
-        <div class="container">
-            <div class="row text-center equal-height">
-                {% for event in events %}
-                    <div class="col-md-3 col-sm-4 col-xs-12">
-                        <div class="thumbnail">
-                            {% if event.imageName %}
-                                <img class="img-responsive"
-                                     src="{{ resize(vich_uploader_asset(event, 'imageFile'), 250, 180) }}"
-                                     alt="{{ event.title }}">
-                            {% endif %}
-                            <h4>{{ event.title }}</h4>
-                            {% if event.information %}<p class="text-muted">{{ event.information }}</p>{% endif %}
-                            {% if event.place %}<p><i
-                                    class="glyphicon glyphicon-map-marker"></i>{{ event.place }} {% if event.lat %}{% if event.lng %}
-                            <a
-                                    href="https://www.google.com/maps/dir/Current+Location/{{ event.lat }},{{ event.lng }}"
-                                    class="btn btn-xs btn-primary" target="_blank">Itinéraire</a>{% endif %}{% endif %}
-                                </p>{% endif %}
-                            {% if event.date %}<p><i class="glyphicon glyphicon-time"></i>{{ event.date|date("d.M.Y") }}
-                                à  {{ event.time|date("H:i") }}</p>{% endif %}
-                            <div class="col-md-12">
-                                <ul class="social-network social-circle">
-                                    {% if event.fb %}
-                                        <li><a href="{{ event.fb }}" class="icoFacebook" title="Facebook"
-                                               target="_blank"><i class="fa fa-facebook"></i></a></li>{% endif %}
-                                    {% if event.twttr %}
-                                        <li><a href="{{ event.twttr }}" class="icoTwitter" title="Twitter"
-                                               target="_blank"><i class="fa fa-twitter"></i></a></li>{% endif %}
-                                    {% if event.website %}
-                                        <li><a href="{{ event.website }}" class="icoGoogle" title="Website"
-                                               target="_blank"><i class="glyphicon glyphicon-home"></i></a>
-                                        </li>{% endif %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Grid Section -->
-    <section id="gallery" class="bg-light-gray">
-        <div class="container">
-            {% if videos %}
-                <div class="row bottom-space-md">
-                    <div class="col-sm-12">
-                        {% set first_video = videos|first %}
-                        <iframe src="{{ first_video.url }}"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen="" width="100%" height="500" frameborder="0"></iframe>
-                    </div>
-                </div>
-            {% endif %}
-
-            {% if videos or albums %}
-                <div class="row photo-gallery">
-                    {% for video in videos %}
-                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                            <div class="hovereffect">
-                                {% if video.imageName %}
+    {% if events %}
+        <!-- Agenda Section -->
+        <section id="agenda">
+            <div class="container">
+                <div class="row text-center equal-height">
+                    {% for event in events %}
+                        <div class="col-md-3 col-sm-4 col-xs-12">
+                            <div class="thumbnail">
+                                {% if event.imageName %}
                                     <img class="img-responsive"
-                                         src="{{ resize(vich_uploader_asset(video, 'imageFile'), 500, 300) }}"
-                                         alt="title">
+                                         src="{{ resize(vich_uploader_asset(event, 'imageFile'), 250, 180) }}"
+                                         alt="{{ event.title }}">
                                 {% endif %}
-                                <div class="overlay">
-                                    <a class="visible-xs info" href="{{ video.url }}" target="_blank">
-                                        <i class="hidden-xs fa fa-play fa-3x"></i>
-                                    </a>
-                                    <a class="hidden-xs info" href="{{ video.url }}" data-toggle="modal"
-                                       data-target="#video-{{ loop.index }}">
-                                        <i class="hidden-xs fa fa-play fa-3x"></i>
-                                    </a>
+                                <h4>{{ event.title }}</h4>
+                                {% if event.information %}<p class="text-muted">{{ event.information }}</p>{% endif %}
+                                {% if event.place %}
+                                    <p>
+                                        <i class="glyphicon glyphicon-map-marker"></i>{{ event.place }}
+                                        {% if event.lat and event.lng %}
+                                            <a href="https://www.google.com/maps/dir/Current+Location/{{ event.lat }},{{ event.lng }}"
+                                               class="btn btn-xs btn-primary" target="_blank">
+                                                Itinéraire
+                                            </a>
+                                        {% endif %}
+                                    </p>
+                                {% endif %}
+                                {% if event.date %}
+                                    <p>
+                                        <i class="glyphicon glyphicon-time"></i>
+                                        {{ event.date|localizeddate("medium", "none", "fr_FR", null, "d MMM yyyy") }}
+                                        à {{ event.time|date("H:i") }}
+                                    </p>
+                                {% endif %}
+                                <div class="col-md-12">
+                                    <ul class="social-network social-circle">
+                                        {% if event.fb %}
+                                            <li><a href="{{ event.fb }}" class="icoFacebook" title="Facebook"
+                                                   target="_blank"><i class="fa fa-facebook"></i></a></li>{% endif %}
+                                        {% if event.twttr %}
+                                            <li><a href="{{ event.twttr }}" class="icoTwitter" title="Twitter"
+                                                   target="_blank"><i class="fa fa-twitter"></i></a></li>{% endif %}
+                                        {% if event.website %}
+                                            <li>
+                                                <a href="{{ event.website }}" class="icoGoogle" title="Website" target="_blank">
+                                                    <i class="glyphicon glyphicon-home"></i>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
                                 </div>
                             </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
 
-                            <div class="modal fade" id="video-{{ loop.index }}" tabindex="-1" role="dialog"
-                                 aria-labelledby="video-{{ loop.index }}"
-                                 aria-hidden="true">
-                                <div class="modal-dialog" style="width: 900px;">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <iframe src="{{ video.url }}"
-                                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                                    allowfullscreen="" width="100%" height="500"
-                                                    frameborder="0"></iframe>
+    {% if videos or albums %}
+        <!-- Gallery Grid Section -->
+        <section id="gallery" class="bg-light-gray">
+            <div class="container">
+                {% if videos %}
+                    <div class="row bottom-space-md">
+                        <div class="col-sm-12">
+                            {% set first_video = videos|first %}
+                            <iframe src="{{ first_video.url }}"
+                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen="" width="100%" height="500" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if videos or albums %}
+                    <div class="row photo-gallery">
+                        {% for video in videos %}
+                            {% if not loop.first %}
+                                <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                    <div class="hovereffect">
+                                        {% if video.imageName %}
+                                            <img class="img-responsive"
+                                                 src="{{ resize(vich_uploader_asset(video, 'imageFile'), 500, 300) }}"
+                                                 alt="title">
+                                        {% endif %}
+                                        <div class="overlay">
+                                            <a class="visible-xs info" href="{{ video.url }}" target="_blank">
+                                                <i class="hidden-xs fa fa-play fa-3x"></i>
+                                            </a>
+                                            <a class="hidden-xs info" href="{{ video.url }}" data-toggle="modal"
+                                               data-target="#video-{{ loop.index }}">
+                                                <i class="hidden-xs fa fa-play fa-3x"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade" id="video-{{ loop.index }}" tabindex="-1" role="dialog"
+                                         aria-labelledby="video-{{ loop.index }}"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog" style="width: 900px;">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <iframe src="{{ video.url }}"
+                                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                                            allowfullscreen="" width="100%" height="500"
+                                                            frameborder="0"></iframe>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    {% endfor %}
+                            {% endif %}
+                        {% endfor %}
 
-                    {% for album in albums %}
-                        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                            <div class="hovereffect">
-                                {% if album.imageName %}
-                                    <img class="img-responsive"
-                                         src="{{ resize(vich_uploader_asset(album, 'imageFile'), 500, 300) }}"
-                                         alt="{{ album.title }}">
-                                {% endif %}
-                                <div class="overlay">
-                                    <h2>{{ album.title }}</h2>
-                                    <a class="info" href="{{ album.url }}" target="_blank">
-                                        <i class="hidden-xs fa fa-plus fa-3x"></i>
-                                    </a>
+                        {% for album in albums %}
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="hovereffect">
+                                    {% if album.imageName %}
+                                        <img class="img-responsive"
+                                             src="{{ resize(vich_uploader_asset(album, 'imageFile'), 500, 300) }}"
+                                             alt="{{ album.title }}">
+                                    {% endif %}
+                                    <div class="overlay">
+                                        <h2>{{ album.title }}</h2>
+                                        <a class="info" href="{{ album.url }}" target="_blank">
+                                            <i class="hidden-xs fa fa-plus fa-3x"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-    </section>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+    {% endif %}
 
 
     <!-- Gallery Grid Section -->
@@ -261,60 +278,64 @@
         </section>
     {% endif %}
 
-    <!-- Team Section -->
-    <section id="team" class="bg-light-gray">
-        <div class="container">
-            {% if members %}
-                <div class="row">
-                    {% for member in members %}
-                        <div class="col-sm-3 col-xs-6">
-                            <div class="team-member">
-                                {% if member.imageName %}
-                                    <img class="img-responsive img-circle"
-                                         src="{{ resize(vich_uploader_asset(member, 'imageFile'), 253, 253) }}"
-                                         alt="{{ member.firstname }}-{{ member.lastname }}-profil">
-                                {% endif %}
-                                <div class="team-member-legend">
-                                    <h4>{{ member.firstname }} {{ member.lastname }}</h4>
-                                    <p class="text-muted">{{ member.function }}</p>
+    {% if members or bio %}
+        <!-- Team Section -->
+        <section id="team" class="bg-light-gray">
+            <div class="container">
+                {% if members %}
+                    <div class="row">
+                        {% for member in members %}
+                            <div class="col-sm-3 col-xs-6">
+                                <div class="team-member">
+                                    {% if member.imageName %}
+                                        <img class="img-responsive img-circle"
+                                             src="{{ resize(vich_uploader_asset(member, 'imageFile'), 253, 253) }}"
+                                             alt="{{ member.firstname }}-{{ member.lastname }}-profil">
+                                    {% endif %}
+                                    <div class="team-member-legend">
+                                        <h4>{{ member.firstname }} {{ member.lastname }}</h4>
+                                        <p class="text-muted">{{ member.function }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
-            {% if bio %}
-                {% if bio.bodytext %}
-                    <div class="row">
-                        <div class="col-lg-8 col-lg-offset-2 well light-well">
-                            <p class="large text-muted text-center">{{ bio.bodytext | raw }}</p>
-                        </div>
+                        {% endfor %}
                     </div>
                 {% endif %}
-            {% endif %}
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="text-center bottom-space-lg">
-                    <h2 class="">Nous contacter</h2>
-                </div>
+                {% if bio %}
+                    {% if bio.bodytext %}
+                        <div class="row">
+                            <div class="col-lg-8 col-lg-offset-2 well light-well">
+                                <p class="large text-muted text-center">{{ bio.bodytext | raw }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
             </div>
-            {% if contact %}
-                {% if contact.bodytext %}
-                    <div class="row">
-                        <div class="col-xs-12 col-lg-6 well light-well">
-                            {{ contact.bodytext | raw }}
-                        </div>
+        </section>
+    {% endif %}
+
+    {% if contact %}
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="text-center bottom-space-lg">
+                        <h2 class="">Nous contacter</h2>
                     </div>
+                </div>
+                {% if contact %}
+                    {% if contact.bodytext %}
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-6 well light-well">
+                                {{ contact.bodytext | raw }}
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        </div>
-    </section>
+            </div>
+        </section>
+    {% endif %}
 
     <footer>
         <div class="container">

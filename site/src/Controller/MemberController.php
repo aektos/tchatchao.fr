@@ -31,7 +31,7 @@ class MemberController extends AbstractController
 
             $this->addFlash('success', 'Enregistrement réussi!');
 
-            return $this->redirectToRoute('member_index');
+            return $this->redirectToRoute('bio_index');
         }
 
         return $this->render('member/new.html.twig', [
@@ -53,7 +53,7 @@ class MemberController extends AbstractController
 
             $this->addFlash('success', 'Enregistrement réussi!');
 
-            return $this->redirectToRoute('member_index', [
+            return $this->redirectToRoute('bio_index', [
                 'id' => $member->getId(),
             ]);
         }
@@ -75,6 +75,6 @@ class MemberController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('member_index');
+        return $this->redirectToRoute('bio_index');
     }
 }

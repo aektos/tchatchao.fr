@@ -39,11 +39,11 @@ class FrontController extends AbstractController
         $events = $eventRepository->findBy(array(), array('date' => 'ASC'));
 
         // Galerie
-        $videos = $videoRepository->findBy(array(), array('date' => 'ASC'));
-        $albums = $albumRepository->findBy(array(), array('date' => 'ASC'));
+        $videos = $videoRepository->findBy(array(), array('date' => 'DESC'));
+        $albums = $albumRepository->findBy(array(), array('date' => 'DESC'));
 
         // Dances
-        $dances = $danceRepository->findBy(array(), array('date' => 'ASC'));
+        $dances = $danceRepository->findBy(array(), array('date' => 'DESC'));
 
         // Présentation du groupe
         $members = $memberRepository->findBy(array(), array('lastname' => 'ASC'));
