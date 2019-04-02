@@ -71,7 +71,7 @@ class CreateUserCommand extends Command
         $output->writeln('Username : ' . $username);
 
         if ( $this->userManager->create($username, $password, $email) ) {
-            $io->success('The user ' . $username . 'was created!');
+            $io->success('The user ' . $username . ' was created!');
         } else {
             $io->error('The user creation failed! check if the user does not already exist.');
         }
