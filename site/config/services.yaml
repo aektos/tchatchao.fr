@@ -6,8 +6,7 @@
 parameters:
     locale: 'en'
     # Google analytics tracking
-    ga_tracking_dev: ''
-    ga_tracking_prod: ''
+    ga_tracking: '%env(ga_tracking)%'
 
     # Tchatchao facebook page
     fb_page: 'https://www.facebook.com/tchatchao06/'

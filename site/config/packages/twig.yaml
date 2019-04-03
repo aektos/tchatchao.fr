@@ -3,6 +3,6 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     globals:
-      ga_tracking: "%ga_tracking_prod%"
+      ga_tracking: "%ga_tracking%"
       fb_page: "%fb_page%"
       youtube_page: "%youtube_page%"
