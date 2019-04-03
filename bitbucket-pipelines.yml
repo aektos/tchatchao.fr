@@ -1,0 +1,16 @@
+# This is a sample build configuration for PHP.
+# Check our guides at https://confluence.atlassian.com/x/VYk8Lw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: nicolastorre/deployer
+
+pipelines:
+    branches:
+        master:
+            - step:
+                  name: Deploy to prod
+                  deployment: production
+                  script:
+                      - composer install --no-dev --optimize-autoloader --no-scripts -d $BITBUCKET_CLONE_DIR/site/
+                      - git ftp push --auto-init --force --user $PROD_FTP_USERNAME --passwd $PROD_FTP_PASSWORD --syncroot site --remote-root / $PROD_FTP_HOST
