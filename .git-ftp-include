@@ -1,1 +1,1 @@
-site/vendor/
+site/vendor/:composer.lock
