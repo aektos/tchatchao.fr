@@ -36,7 +36,7 @@
                 {% set largeFile = vich_uploader_asset(background, 'largeFile') %}
                 @media (min-width: 992px) {
                     #{{ section }} {
-                        background-image: url({{ resize(largeFile, 1440, 719) }});
+                        background-image: url('{{ resize(largeFile, 1440, 719) }}');
                     }
                 }
 
@@ -48,7 +48,7 @@
 
                 @media (min-width: 768px) and (max-width: 991px) {
                     #{{ section }} {
-                        background-image: url({{ resize(mediumFile, 768, 383) }});
+                        background-image: url('{{ resize(mediumFile, 768, 383) }}');
                     }
                 }
 
@@ -59,7 +59,7 @@
                 {% endif %}
                 @media (max-width: 767px) {
                     #{{ section }} {
-                        background-image: url({{ resize(smallFile, 480, 240) }});
+                        background-image: url('{{ resize(smallFile, 480, 240) }}');
                     }
                 }
 
