@@ -93,7 +93,6 @@
 
         this.$doc = $(document);
         this.$header = $('.navbar-default');
-        this.didScroll = false;
         this.changeHeaderOn = 300;
 
         this.init();
