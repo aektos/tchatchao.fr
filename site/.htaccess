@@ -40,6 +40,9 @@
     # protect against MIME-Type sniffing
     Header always set X-Content-Type-Options "nosniff"
 
+    # The HTTP Strict Transport Security (HSTS) Header
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
+
     <FilesMatch "\\.(ico|jpe?g|png|gif|swf|gz|ttf)$">
         Header set Cache-Control "max-age=2592000, public"
     </FilesMatch>
@@ -74,6 +77,9 @@ Options -Indexes
 
 RewriteEngine on
 RewriteBase /
+
+RewriteCond %{HTTP_HOST} ^tchatchao.fr
+RewriteRule (.*) https://www.tchatchao.fr$1 [R=301]
 
 RewriteCond %{REQUEST_URI} !^/public/
 RewriteRule ^(.*)$ /public/$1 [L]
