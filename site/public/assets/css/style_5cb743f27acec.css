@@ -964,3 +964,12 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #fed136;
 }
+
+/*
+    Eliminate flash of unstyled content
+    https://stackoverflow.com/questions/3221561/eliminate-flash-of-unstyled-content/53364612#53364612
+ */
+html {
+    visibility: visible;
+    opacity: 1;
+}
