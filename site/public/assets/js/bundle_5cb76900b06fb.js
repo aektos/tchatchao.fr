@@ -14,14 +14,6 @@
             this.cookieDuration = cookieDuration; // 14;                    // Number of days before the cookie expires, and the banner reappears
             this.cookieName = cookieName; // 'nicolastorre_cookieDisclaimer';        // Name of our cookie
             this.cookieValue = cookieValue; // 'on';                     // Value of cookie
-
-            this.event();
-
-            var observer = lozad(); // lazy loads elements with default selector as '.lozad'
-            observer.observe();
-
-            var firstImages = document.querySelector('.lozad-img-first');
-            observer.triggerLoad(firstImages);
         },
 
         event: function() {
@@ -116,6 +108,15 @@
             // Highlight the top nav as scrolling occurs
             this.highlightTopNav();
 
+            this.event();
+
+            var observer = lozad(); // lazy loads elements with default selector as '.lozad'
+            observer.observe();
+
+            var firstImages = document.querySelectorAll('.lozad-first');
+            firstImages.forEach(function(firstImage) {
+                observer.triggerLoad(firstImage);
+            });
         },
 
         /**
