@@ -79,7 +79,7 @@ RewriteEngine on
 RewriteBase /
 
 RewriteCond %{HTTP_HOST} ^tchatchao.fr
-RewriteRule (.*) https://www.tchatchao.fr$1 [R=301,L]
+RewriteRule (.*) https://www.tchatchao.fr/$1 [R=301,L]
 
 RewriteCond %{REQUEST_URI} !^/public/
 RewriteRule ^(.*)$ /public/$1 [L]
