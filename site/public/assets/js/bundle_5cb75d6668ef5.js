@@ -19,6 +19,9 @@
 
             var observer = lozad(); // lazy loads elements with default selector as '.lozad'
             observer.observe();
+
+            var firstImages = document.querySelector('.lozad-img-first');
+            observer.triggerLoad(firstImages);
         },
 
         event: function() {
