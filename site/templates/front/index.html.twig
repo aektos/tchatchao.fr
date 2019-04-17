@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block meta %}
-    <meta description="Tchatchao propose un répertoire de Baleti aux inspirations et aux tonalités variées mêlant l'accordéon diatonique de Sylvie Boitard, la vielle à roue alto de Jean FranÃ§ois Bosch, les percussions de Pascal Oddo, la basse et la guitare d'Etienne Bosch."/>
+    <meta name="description" content="Tchatchao propose un répertoire de Baleti aux inspirations et aux tonalités variées mêlant l'accordéon diatonique de Sylvie Boitard, la vielle à roue alto de Jean FranÃ§ois Bosch, les percussions de Pascal Oddo, la basse et la guitare d'Etienne Bosch."/>
 
     <!-- meta tag social network -->
     <meta property="og:locale" content="fr_FR"/>
@@ -73,6 +73,7 @@
         <div class="container-fluid">
             <div class="intro-text">
                 <div class="row">
+                    <h1 class="hidden">Tchatchao</h1>
                     {#<div class="col-md-3 col-md-offset-5 ">#}
                     {#<iframe style="position: relative; bottom: -250px;" width="100%" height="250" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/22697299&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false&amp;visual=false"></iframe>#}
                     {#</div>#}
@@ -92,8 +93,8 @@
                         <div class="col-md-3 col-sm-4 col-xs-12">
                             <div class="thumbnail">
                                 {% if event.imageName %}
-                                    <img class="img-responsive"
-                                         src="{{ resize(vich_uploader_asset(event, 'imageFile'), 250, 180) }}"
+                                    <img class="lozad img-responsive"
+                                         data-src="{{ resize(vich_uploader_asset(event, 'imageFile'), 243, 175) }}"
                                          alt="{{ event.title }}">
                                 {% endif %}
                                 <h4>{{ event.title }}</h4>
@@ -149,9 +150,9 @@
                     <div class="row bottom-space-md">
                         <div class="col-sm-12">
                             {% set first_video = videos|first %}
-                            <iframe src="{{ first_video.url }}"
+                            <iframe class="lozad" data-src="{{ first_video.url }}"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen="" width="100%" height="500" frameborder="0"></iframe>
+                                    allowfullscreen="" width="100%" height="500"></iframe>
                         </div>
                     </div>
                 {% endif %}
@@ -163,8 +164,8 @@
                                 <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                                     <div class="hovereffect">
                                         {% if video.imageName %}
-                                            <img class="img-responsive"
-                                                 src="{{ resize(vich_uploader_asset(video, 'imageFile'), 500, 300) }}"
+                                            <img class="lozad img-responsive"
+                                                 data-src="{{ resize(vich_uploader_asset(video, 'imageFile'), 500, 300) }}"
                                                  alt="title">
                                         {% endif %}
                                         <div class="overlay">
@@ -184,10 +185,9 @@
                                         <div class="modal-dialog" style="width: 900px;">
                                             <div class="modal-content">
                                                 <div class="modal-body">
-                                                    <iframe src="{{ video.url }}"
+                                                    <iframe class="lozad" data-src="{{ video.url }}"
                                                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                                            allowfullscreen="" width="100%" height="500"
-                                                            frameborder="0"></iframe>
+                                                            allowfullscreen="" width="100%" height="500"></iframe>
                                                 </div>
                                             </div>
                                         </div>
@@ -200,8 +200,8 @@
                             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                                 <div class="hovereffect">
                                     {% if album.imageName %}
-                                        <img class="img-responsive"
-                                             src="{{ resize(vich_uploader_asset(album, 'imageFile'), 500, 300) }}"
+                                        <img class="lozad img-responsive"
+                                             data-src="{{ resize(vich_uploader_asset(album, 'imageFile'), 500, 300) }}"
                                              alt="{{ album.title }}">
                                     {% endif %}
                                     <div class="overlay">
@@ -228,9 +228,9 @@
                     <div class="row bottom-space-md">
                         <div class="col-sm-12">
                             {% set first_video = dances|first %}
-                            <iframe src="{{ first_video.url }}"
+                            <iframe class="lozad" data-src="{{ first_video.url }}"
                                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen="" width="100%" height="500" frameborder="0"></iframe>
+                                    allowfullscreen="" width="100%" height="500"></iframe>
                         </div>
                     </div>
                 {% endif %}
@@ -241,8 +241,8 @@
                             <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                                 <div class="hovereffect">
                                     {% if dance.imageName %}
-                                        <img class="img-responsive"
-                                             src="{{ resize(vich_uploader_asset(dance, 'imageFile'), 500, 300) }}"
+                                        <img class="lozad img-responsive"
+                                             data-src="{{ resize(vich_uploader_asset(dance, 'imageFile'), 263, 158) }}"
                                              alt="title">
                                     {% endif %}
                                     <div class="overlay">
@@ -262,10 +262,9 @@
                                     <div class="modal-dialog" style="width: 900px;">
                                         <div class="modal-content">
                                             <div class="modal-body">
-                                                <iframe src="{{ dance.url }}"
+                                                <iframe class="lozad" data-src="{{ dance.url }}"
                                                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                                        allowfullscreen="" width="100%" height="500"
-                                                        frameborder="0"></iframe>
+                                                        allowfullscreen="" width="100%" height="500"></iframe>
                                             </div>
                                         </div>
                                     </div>
@@ -288,8 +287,8 @@
                             <div class="col-sm-3 col-xs-6">
                                 <div class="team-member">
                                     {% if member.imageName %}
-                                        <img class="img-responsive img-circle"
-                                             src="{{ resize(vich_uploader_asset(member, 'imageFile'), 253, 253) }}"
+                                        <img class="lozad img-responsive img-circle"
+                                             data-src="{{ resize(vich_uploader_asset(member, 'imageFile'), 249, 249) }}"
                                              alt="{{ member.firstname }}-{{ member.lastname }}-profil">
                                     {% endif %}
                                     <div class="team-member-legend">
@@ -306,7 +305,7 @@
                     {% if bio.bodytext %}
                         <div class="row">
                             <div class="col-lg-8 col-lg-offset-2 well light-well">
-                                <p class="large text-muted text-center">{{ bio.bodytext | raw }}</p>
+                                <div class="large text-muted text-center">{{ bio.bodytext | raw }}</div>
                             </div>
                         </div>
                     {% endif %}
@@ -398,7 +397,7 @@
                         modifiée, relative à l'informatique, aux fichiers et aux libertés, vous disposez d'un droit
                         d'accès, de rectification, de modification et de suppression des données vous concernant.</p>
 
-                    <h4>Conditions dâ€™utilisation du site</h4>
+                    <h4>Conditions d'utilisation du site</h4>
                     <p class="text-justify">Le présent site et l'ensemble de son contenu (textes, logos, images, photos,
                         ergonomie ...) sont protégés au titre du droit d'auteur.</p>
                     <p class="text-justify">L'association Traditions Nouvelles et le responsable de conception ne

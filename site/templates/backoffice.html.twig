@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="tchatchao">
-    <meta name="keywords" content="bal folk, baleti, trad, vielle à roue, accordéon diatonique"/>
     <meta name="robots" content="none" />
     {% block meta %}{% endblock %}
 
@@ -32,16 +31,12 @@
     <meta name="msapplication-TileImage" content="{{ asset('bundles/app/favicon/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- Library CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.min.css') }}"/>
 
     <!-- Custom CSS -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.3.1/css/fileinput.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}"/>
 
     <style>
         body {
@@ -64,13 +59,9 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/tinymce.min.js') }}"></script>
 
     {% block javascripts %}{% endblock %}
 
@@ -91,6 +82,5 @@
 
         {% block body %}{% endblock %}
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.3.10/tinymce.min.js"></script>
 </body>
 </html>

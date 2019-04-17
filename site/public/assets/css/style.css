@@ -1,3 +1,6 @@
+iframe {
+    border: 0;
+}
 #cookie-law {
   position: fixed;
   left: 0;
@@ -759,59 +762,59 @@ section h3.section-subheading {
 aside.clients img {
   margin: 50px auto;
 }
-section#contact {
+#contact {
   background-image: url('../img/contact.png');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-section#contact .section-heading {
+#contact .section-heading {
   color: white;
 }
-section#contact .form-group {
+#contact .form-group {
   margin-bottom: 25px;
 }
-section#contact .form-group input,
-section#contact .form-group textarea {
+#contact .form-group input,
+#contact .form-group textarea {
   padding: 20px;
 }
-section#contact .form-group input.form-control {
+#contact .form-group input.form-control {
   height: auto;
 }
-section#contact .form-group textarea.form-control {
+#contact .form-group textarea.form-control {
   height: 236px;
 }
-section#contact .form-control:focus {
+#contact .form-control:focus {
   border-color: #fed136;
   box-shadow: none;
 }
-section#contact ::-webkit-input-placeholder {
+#contact ::-webkit-input-placeholder {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   color: #bbbbbb;
 }
-section#contact :-moz-placeholder {
+#contact :-moz-placeholder {
   /* Firefox 18- */
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   color: #bbbbbb;
 }
-section#contact ::-moz-placeholder {
+#contact ::-moz-placeholder {
   /* Firefox 19+ */
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   color: #bbbbbb;
 }
-section#contact :-ms-input-placeholder {
+#contact :-ms-input-placeholder {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   color: #bbbbbb;
 }
-section#contact .text-danger {
+#contact .text-danger {
   color: #e74c3c;
 }
 footer {

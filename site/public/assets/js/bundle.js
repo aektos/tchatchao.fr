@@ -16,6 +16,9 @@
             this.cookieValue = cookieValue; // 'on';                     // Value of cookie
 
             this.event();
+
+            var observer = lozad(); // lazy loads elements with default selector as '.lozad'
+            observer.observe();
         },
 
         event: function() {
